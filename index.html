@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendario 2026</title>
+  <style>
+    :root {
+      --bg: #f8f8f6;
+      --ink: #1c1c1c;
+      --muted: #6b6b6b;
+      --table-border: #d9d9d0;
+      --head-bg: #773853;
+      --row-alt: #efcecc;
+    }
+    body {
+      margin: 0;
+      font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .wrap {
+      padding: 24px;
+    }
+    .tabs {
+      margin-top: 8px;
+    }
+    .tabs > input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .tab-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .tab-controls label {
+      font-size: 25px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--table-border);
+      background: #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+    .tab-panel {
+      display: none;
+    }
+    #tab-0:checked ~ .tab-controls label[for="tab-0"],
+    #tab-1:checked ~ .tab-controls label[for="tab-1"],
+    #tab-2:checked ~ .tab-controls label[for="tab-2"],
+    #tab-3:checked ~ .tab-controls label[for="tab-3"],
+    #tab-4:checked ~ .tab-controls label[for="tab-4"],
+    #tab-5:checked ~ .tab-controls label[for="tab-5"] {
+      background: var(--head-bg);
+      color: #fff;
+      border-color: var(--head-bg);
+    }
+    #tab-0:checked ~ .tab-panels #panel-tab-0,
+    #tab-1:checked ~ .tab-panels #panel-tab-1,
+    #tab-2:checked ~ .tab-panels #panel-tab-2,
+    #tab-3:checked ~ .tab-panels #panel-tab-3,
+    #tab-4:checked ~ .tab-panels #panel-tab-4,
+    #tab-5:checked ~ .tab-panels #panel-tab-5 {
+      display: block;
+    }
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 0 0 12px 0;
+    }
+    .logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+    }
+    h1 {
+      margin: 0;
+      font-size: 70px;
+      letter-spacing: 0.2px;
+      color: var(--head-bg);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--table-border);
+      border-radius: 10px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 25px;
+    }
+    thead th {
+      position: sticky;
+      top: 0;
+      background: var(--head-bg);
+      color: #ffffff;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--table-border);
+      white-space: nowrap;
+    }
+    tbody td {
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--table-border);
+      vertical-align: top;
+      white-space: nowrap;
+    }
+    tbody tr:nth-child(even) td {
+      background: var(--row-alt);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">
+      <img class="logo" src="logo.png" alt="Livorno Baseball Club">
+      <h1>Calendario 2026</h1>
+    </div>
+    <div class="tabs">
+      <input type="radio" name="tabs" id="tab-0" checked><input type="radio" name="tabs" id="tab-1"><input type="radio" name="tabs" id="tab-2"><input type="radio" name="tabs" id="tab-3"><input type="radio" name="tabs" id="tab-4"><input type="radio" name="tabs" id="tab-5">
+      <div class="tab-controls">
+        <label for="tab-0">Tutte</label><label for="tab-1">Serie B</label><label for="tab-2">Serie C</label><label for="tab-3">U15</label><label for="tab-4">U12</label><label for="tab-5">STADIO A. SISI</label>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel" id="panel-tab-0"><div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>data</th><th>giorno</th><th>ora</th><th>campionato</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
+        </thead>
+        <tbody>
+<tr><td>14/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0915AAA0111</td></tr>
+<tr><td>21/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0211</td></tr>
+<tr><td>22/03/2026</td><td>domenica</td><td>10:30</td><td>U12</td><td>Andata</td><td>FIORENTINA BASEBALL</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Firenze (FI)</td><td>B0912AAA0213</td></tr>
+<tr><td>28/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAA0311</td></tr>
+<tr><td>28/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>C.S.D. YMCA</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Castiglione Della Pescaia (GR)</td><td>B0915AAA0314</td></tr>
+<tr><td>29/03/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lancers Baseball Club A.S.D.</td><td>Livorno (LI)</td><td>B0912AAA0311</td></tr>
+<tr><td>04/04/2026</td><td>sabato</td><td>11:00</td><td>U12</td><td>Andata</td><td>ETRUSCAN FIGHTERS</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0912AAA0111</td></tr>
+<tr><td>11/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAA0411</td></tr>
+<tr><td>12/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno 1948 Baseball A.S.D.</td><td>Arezzo (AR)</td><td>B00SBACA0114</td></tr>
+<tr><td>12/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Capannori (LU)</td><td>B0912AAA0411</td></tr>
+<tr><td>12/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>ASD COSMOS</td><td>Livorno (LI)</td><td>B00SCAHA0113</td></tr>
+<tr><td>12/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno 1948 Baseball A.S.D.</td><td>Arezzo (AR)</td><td>B00SBACA0214</td></tr>
+<tr><td>18/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAA0511</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0312</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>CHIANTELLERONI</td><td>Livorno (LI)</td><td>B0912AAA0512</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>Siena B.S.C.</td><td>DRK SPORT-LIVORNO 1948</td><td>Monteriggioni (SI)</td><td>B00SCAHA0212</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0412</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Sesto Fiorentino (FI)</td><td>B00SBACA0511</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0611</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LANCERS B.C. A.S.D.</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lastra A Signa (FI)</td><td>B0915AAA0613</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>20:00</td><td>Serie B</td><td>Andata</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Sesto Fiorentino (FI)</td><td>B00SBACA0611</td></tr>
+<tr><td>26/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Padule Mosquitos</td><td>Livorno (LI)</td><td>B0912AAA0611</td></tr>
+<tr><td>26/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>Padule Sestese</td><td>Livorno (LI)</td><td>B00SCAHA0312</td></tr>
+<tr><td>02/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAA0711</td></tr>
+<tr><td>03/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>DRK SPORT-LIVORNO 1948</td><td>Firenze</td><td>B00SCAHA0411</td></tr>
+<tr><td>09/05/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA0913</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>10:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA1013</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>Serie C</td><td>Andata</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>DRK SPORT-LIVORNO 1948</td><td>Monteriggioni (SI)</td><td>B00SCAHA0512</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B0912AAR0111</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0915AAR0111</td></tr>
+<tr><td>16/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>BIG MAT BSCGROSSETO</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Grosseto (GR)</td><td>B0915AAR0211</td></tr>
+<tr><td>16/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAR0214</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno 1948 Baseball A.S.D.</td><td>Bologna</td><td>B00SBACA1112</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0912AAR0213</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>A.S.D. Nuove Pantere Lucca</td><td>Livorno (LI)</td><td>B00SCAHA0613</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno 1948 Baseball A.S.D.</td><td>Bologna</td><td>B00SBACA1212</td></tr>
+<tr><td>23/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0314</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0713</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>Lancers Baseball Club A.S.D.</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lastra A Signa (FI)</td><td>B0912AAR0311</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>DRK SPORT-LIVORNO 1948</td><td>Grosseto</td><td>B00SCAHA0711</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0813</td></tr>
+<tr><td>30/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>SB MONTECHIANTI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Monteriggioni (SI)</td><td>B0915AAR0411</td></tr>
+<tr><td>30/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAR0413</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1312</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0912AAR0411</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1412</td></tr>
+<tr><td>06/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>FIORENTINA BASEBALL</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Firenze (FI)</td><td>B0915AAR0511</td></tr>
+<tr><td>06/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAR0512</td></tr>
+<tr><td>07/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0114</td></tr>
+<tr><td>07/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>ASD COSMOS</td><td>DRK SPORT-LIVORNO 1948</td><td>San Casciano In Val Di Pesa</td><td>B00SCAHR0113</td></tr>
+<tr><td>07/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0214</td></tr>
+<tr><td>13/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAR0613</td></tr>
+<tr><td>14/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>LANCERS B.C. A.S.D.</td><td>Livorno 1948 Baseball A.S.D.</td><td>Lastra A Signa (FI)</td><td>B00SBACR0312</td></tr>
+<tr><td>14/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>Siena B.S.C.</td><td>Livorno (LI)</td><td>B00SCAHR0212</td></tr>
+<tr><td>14/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>LANCERS B.C. A.S.D.</td><td>Livorno 1948 Baseball A.S.D.</td><td>Lastra A Signa (FI)</td><td>B00SBACR0412</td></tr>
+<tr><td>20/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>Polisportiva Padule Baseball</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Sesto Fiorentino (FI)</td><td>B0915AAR0711</td></tr>
+<tr><td>20/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0713</td></tr>
+<tr><td>21/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0511</td></tr>
+<tr><td>21/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>Padule Sestese</td><td>DRK SPORT-LIVORNO 1948</td><td>Sesto Fiorentino (FI)</td><td>B00SCAHR0312</td></tr>
+<tr><td>21/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0611</td></tr>
+<tr><td>27/06/2026</td><td>sabato</td><td>15:30</td><td>U12</td><td>Ritorno</td><td>Padule Mosquitos</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Sesto Fiorentino (FI)</td><td>B0912AAR0611</td></tr>
+<tr><td>28/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>ETRUSCAN FIGHTERS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Castiglione Della Pescaia (GR)</td><td>B00SBACR0713</td></tr>
+<tr><td>28/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>Livorno (LI)</td><td>B00SCAHR0411</td></tr>
+<tr><td>28/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>ETRUSCAN FIGHTERS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Castiglione Della Pescaia (GR)</td><td>B00SBACR0813</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td>10:30</td><td>U12</td><td>Ritorno</td><td>CHIANTELLERONI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Bagno A Ripoli (FI)</td><td>B0912AAR0512</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>CALI ROMA SPRINT 24</td><td>Livorno 1948 Baseball A.S.D.</td><td>Roma</td><td>B00SBACR0913</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>Livorno (LI)</td><td>B00SCAHR0512</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>CALI ROMA SPRINT 24</td><td>Livorno 1948 Baseball A.S.D.</td><td>Roma</td><td>B00SBACR1013</td></tr>
+<tr><td>12/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1112</td></tr>
+<tr><td>12/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>A.S.D. Nuove Pantere Lucca</td><td>DRK SPORT-LIVORNO 1948</td><td>Lastra A Signa (FI)</td><td>B00SCAHR0613</td></tr>
+<tr><td>12/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1212</td></tr>
+<tr><td>19/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>Livorno (LI)</td><td>B00SCAHR0711</td></tr>
+<tr><td>26/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno 1948 Baseball A.S.D.</td><td>Colorno (PR)</td><td>B00SBACR1312</td></tr>
+<tr><td>26/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno 1948 Baseball A.S.D.</td><td>Colorno (PR)</td><td>B00SBACR1412</td></tr>
+        </tbody>
+      </table>
+    </div></div><div class="tab-panel" id="panel-tab-1"><div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>data</th><th>giorno</th><th>ora</th><th>campionato</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
+        </thead>
+        <tbody>
+<tr><td>12/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno 1948 Baseball A.S.D.</td><td>Arezzo (AR)</td><td>B00SBACA0114</td></tr>
+<tr><td>12/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno 1948 Baseball A.S.D.</td><td>Arezzo (AR)</td><td>B00SBACA0214</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0312</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0412</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Sesto Fiorentino (FI)</td><td>B00SBACA0511</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>20:00</td><td>Serie B</td><td>Andata</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Sesto Fiorentino (FI)</td><td>B00SBACA0611</td></tr>
+<tr><td>09/05/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA0913</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>10:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA1013</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno 1948 Baseball A.S.D.</td><td>Bologna</td><td>B00SBACA1112</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno 1948 Baseball A.S.D.</td><td>Bologna</td><td>B00SBACA1212</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0713</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0813</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1312</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1412</td></tr>
+<tr><td>07/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0114</td></tr>
+<tr><td>07/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0214</td></tr>
+<tr><td>14/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>LANCERS B.C. A.S.D.</td><td>Livorno 1948 Baseball A.S.D.</td><td>Lastra A Signa (FI)</td><td>B00SBACR0312</td></tr>
+<tr><td>14/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>LANCERS B.C. A.S.D.</td><td>Livorno 1948 Baseball A.S.D.</td><td>Lastra A Signa (FI)</td><td>B00SBACR0412</td></tr>
+<tr><td>21/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0511</td></tr>
+<tr><td>21/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0611</td></tr>
+<tr><td>28/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>ETRUSCAN FIGHTERS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Castiglione Della Pescaia (GR)</td><td>B00SBACR0713</td></tr>
+<tr><td>28/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>ETRUSCAN FIGHTERS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Castiglione Della Pescaia (GR)</td><td>B00SBACR0813</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>CALI ROMA SPRINT 24</td><td>Livorno 1948 Baseball A.S.D.</td><td>Roma</td><td>B00SBACR0913</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>CALI ROMA SPRINT 24</td><td>Livorno 1948 Baseball A.S.D.</td><td>Roma</td><td>B00SBACR1013</td></tr>
+<tr><td>12/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1112</td></tr>
+<tr><td>12/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1212</td></tr>
+<tr><td>26/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno 1948 Baseball A.S.D.</td><td>Colorno (PR)</td><td>B00SBACR1312</td></tr>
+<tr><td>26/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno 1948 Baseball A.S.D.</td><td>Colorno (PR)</td><td>B00SBACR1412</td></tr>
+        </tbody>
+      </table>
+    </div></div><div class="tab-panel" id="panel-tab-2"><div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>data</th><th>giorno</th><th>ora</th><th>campionato</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
+        </thead>
+        <tbody>
+<tr><td>12/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>ASD COSMOS</td><td>Livorno (LI)</td><td>B00SCAHA0113</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>Siena B.S.C.</td><td>DRK SPORT-LIVORNO 1948</td><td>Monteriggioni (SI)</td><td>B00SCAHA0212</td></tr>
+<tr><td>26/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>Padule Sestese</td><td>Livorno (LI)</td><td>B00SCAHA0312</td></tr>
+<tr><td>03/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>DRK SPORT-LIVORNO 1948</td><td>Firenze</td><td>B00SCAHA0411</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>Serie C</td><td>Andata</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>DRK SPORT-LIVORNO 1948</td><td>Monteriggioni (SI)</td><td>B00SCAHA0512</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>A.S.D. Nuove Pantere Lucca</td><td>Livorno (LI)</td><td>B00SCAHA0613</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>DRK SPORT-LIVORNO 1948</td><td>Grosseto</td><td>B00SCAHA0711</td></tr>
+<tr><td>07/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>ASD COSMOS</td><td>DRK SPORT-LIVORNO 1948</td><td>San Casciano In Val Di Pesa</td><td>B00SCAHR0113</td></tr>
+<tr><td>14/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>Siena B.S.C.</td><td>Livorno (LI)</td><td>B00SCAHR0212</td></tr>
+<tr><td>21/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>Padule Sestese</td><td>DRK SPORT-LIVORNO 1948</td><td>Sesto Fiorentino (FI)</td><td>B00SCAHR0312</td></tr>
+<tr><td>28/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>Livorno (LI)</td><td>B00SCAHR0411</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>Livorno (LI)</td><td>B00SCAHR0512</td></tr>
+<tr><td>12/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>A.S.D. Nuove Pantere Lucca</td><td>DRK SPORT-LIVORNO 1948</td><td>Lastra A Signa (FI)</td><td>B00SCAHR0613</td></tr>
+<tr><td>19/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>Livorno (LI)</td><td>B00SCAHR0711</td></tr>
+        </tbody>
+      </table>
+    </div></div><div class="tab-panel" id="panel-tab-3"><div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>data</th><th>giorno</th><th>ora</th><th>campionato</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
+        </thead>
+        <tbody>
+<tr><td>14/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0915AAA0111</td></tr>
+<tr><td>21/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0211</td></tr>
+<tr><td>28/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAA0311</td></tr>
+<tr><td>28/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>C.S.D. YMCA</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Castiglione Della Pescaia (GR)</td><td>B0915AAA0314</td></tr>
+<tr><td>11/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAA0411</td></tr>
+<tr><td>18/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAA0511</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0611</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LANCERS B.C. A.S.D.</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lastra A Signa (FI)</td><td>B0915AAA0613</td></tr>
+<tr><td>02/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAA0711</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0915AAR0111</td></tr>
+<tr><td>16/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>BIG MAT BSCGROSSETO</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Grosseto (GR)</td><td>B0915AAR0211</td></tr>
+<tr><td>16/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAR0214</td></tr>
+<tr><td>23/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0314</td></tr>
+<tr><td>30/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>SB MONTECHIANTI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Monteriggioni (SI)</td><td>B0915AAR0411</td></tr>
+<tr><td>30/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAR0413</td></tr>
+<tr><td>06/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>FIORENTINA BASEBALL</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Firenze (FI)</td><td>B0915AAR0511</td></tr>
+<tr><td>06/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAR0512</td></tr>
+<tr><td>13/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAR0613</td></tr>
+<tr><td>20/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>Polisportiva Padule Baseball</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Sesto Fiorentino (FI)</td><td>B0915AAR0711</td></tr>
+<tr><td>20/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0713</td></tr>
+        </tbody>
+      </table>
+    </div></div><div class="tab-panel" id="panel-tab-4"><div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>data</th><th>giorno</th><th>ora</th><th>campionato</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
+        </thead>
+        <tbody>
+<tr><td>22/03/2026</td><td>domenica</td><td>10:30</td><td>U12</td><td>Andata</td><td>FIORENTINA BASEBALL</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Firenze (FI)</td><td>B0912AAA0213</td></tr>
+<tr><td>29/03/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lancers Baseball Club A.S.D.</td><td>Livorno (LI)</td><td>B0912AAA0311</td></tr>
+<tr><td>04/04/2026</td><td>sabato</td><td>11:00</td><td>U12</td><td>Andata</td><td>ETRUSCAN FIGHTERS</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0912AAA0111</td></tr>
+<tr><td>12/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Capannori (LU)</td><td>B0912AAA0411</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>CHIANTELLERONI</td><td>Livorno (LI)</td><td>B0912AAA0512</td></tr>
+<tr><td>26/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Padule Mosquitos</td><td>Livorno (LI)</td><td>B0912AAA0611</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B0912AAR0111</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0912AAR0213</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>Lancers Baseball Club A.S.D.</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lastra A Signa (FI)</td><td>B0912AAR0311</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0912AAR0411</td></tr>
+<tr><td>27/06/2026</td><td>sabato</td><td>15:30</td><td>U12</td><td>Ritorno</td><td>Padule Mosquitos</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Sesto Fiorentino (FI)</td><td>B0912AAR0611</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td>10:30</td><td>U12</td><td>Ritorno</td><td>CHIANTELLERONI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Bagno A Ripoli (FI)</td><td>B0912AAR0512</td></tr>
+        </tbody>
+      </table>
+    </div></div><div class="tab-panel" id="panel-tab-5"><div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>data</th><th>giorno</th><th>ora</th><th>campionato</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
+        </thead>
+        <tbody>
+<tr><td>14/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0915AAA0111</td></tr>
+<tr><td>21/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0211</td></tr>
+<tr><td>28/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAA0311</td></tr>
+<tr><td>29/03/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lancers Baseball Club A.S.D.</td><td>Livorno (LI)</td><td>B0912AAA0311</td></tr>
+<tr><td>04/04/2026</td><td>sabato</td><td>11:00</td><td>U12</td><td>Andata</td><td>ETRUSCAN FIGHTERS</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0912AAA0111</td></tr>
+<tr><td>11/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAA0411</td></tr>
+<tr><td>12/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>ASD COSMOS</td><td>Livorno (LI)</td><td>B00SCAHA0113</td></tr>
+<tr><td>18/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAA0511</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0312</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>CHIANTELLERONI</td><td>Livorno (LI)</td><td>B0912AAA0512</td></tr>
+<tr><td>19/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0412</td></tr>
+<tr><td>25/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0611</td></tr>
+<tr><td>26/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Padule Mosquitos</td><td>Livorno (LI)</td><td>B0912AAA0611</td></tr>
+<tr><td>26/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>Padule Sestese</td><td>Livorno (LI)</td><td>B00SCAHA0312</td></tr>
+<tr><td>02/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAA0711</td></tr>
+<tr><td>09/05/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA0913</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>10:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA1013</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B0912AAR0111</td></tr>
+<tr><td>10/05/2026</td><td>domenica</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0915AAR0111</td></tr>
+<tr><td>16/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAR0214</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0912AAR0213</td></tr>
+<tr><td>17/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>A.S.D. Nuove Pantere Lucca</td><td>Livorno (LI)</td><td>B00SCAHA0613</td></tr>
+<tr><td>23/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0314</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0713</td></tr>
+<tr><td>24/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0813</td></tr>
+<tr><td>30/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAR0413</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1312</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0912AAR0411</td></tr>
+<tr><td>31/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1412</td></tr>
+<tr><td>06/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAR0512</td></tr>
+<tr><td>07/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0114</td></tr>
+<tr><td>07/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0214</td></tr>
+<tr><td>13/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAR0613</td></tr>
+<tr><td>14/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>Siena B.S.C.</td><td>Livorno (LI)</td><td>B00SCAHR0212</td></tr>
+<tr><td>20/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0713</td></tr>
+<tr><td>21/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0511</td></tr>
+<tr><td>21/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0611</td></tr>
+<tr><td>28/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>Livorno (LI)</td><td>B00SCAHR0411</td></tr>
+<tr><td>05/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>Livorno (LI)</td><td>B00SCAHR0512</td></tr>
+<tr><td>12/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1112</td></tr>
+<tr><td>12/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1212</td></tr>
+<tr><td>19/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>Livorno (LI)</td><td>B00SCAHR0711</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
