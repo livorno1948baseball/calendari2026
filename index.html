@@ -87,36 +87,86 @@
       letter-spacing: 0.2px;
       color: var(--head-bg);
     }
-    .table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--table-border);
-      border-radius: 10px;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .card {
       background: #fff;
+      border: 1px solid var(--table-border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 25px;
+    .card-top {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 700;
     }
-    thead th {
-      position: sticky;
-      top: 0;
-      background: var(--head-bg);
-      color: #ffffff;
-      text-transform: uppercase;
-      text-align: left;
-      padding: 16px 12px;
-      border-bottom: 1px solid var(--table-border);
-      white-space: nowrap;
+    .date {
+      color: var(--head-bg);
     }
-    tbody td {
-      padding: 14px 12px;
-      border-bottom: 1px solid var(--table-border);
-      vertical-align: top;
-      white-space: nowrap;
+    .time {
+      color: var(--ink);
+      font-weight: 600;
     }
-    tbody tr:nth-child(even) td {
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
       background: var(--row-alt);
+      color: #4b1f27;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .teams {
+      display: grid;
+      gap: 8px;
+    }
+    .team {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .label {
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.2px;
+    }
+    .name {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .place,
+    .code {
+      display: grid;
+      gap: 4px;
+    }
+    .value {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .empty {
+      padding: 24px;
+      border: 1px dashed var(--table-border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--muted);
+      font-weight: 600;
     }
     @media (max-width: 900px) {
       .title {
@@ -142,14 +192,20 @@
         width: 64px;
         height: 64px;
       }
-      table {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 14px;
+      }
+      .card-top {
+        font-size: 20px;
+      }
+      .name {
         font-size: 18px;
       }
-      thead th {
-        padding: 12px 10px;
-      }
-      tbody td {
-        padding: 10px 10px;
+      .value {
+        font-size: 15px;
       }
     }
   </style>
@@ -166,233 +222,3923 @@
         <label for="tab-0">Tutte</label><label for="tab-1">Serie B</label><label for="tab-2">Serie C</label><label for="tab-3">U15</label><label for="tab-4">U12</label><label for="tab-5">STADIO A. SISI</label>
       </div>
       <div class="tab-panels">
-        <div class="tab-panel" id="panel-tab-0"><div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>data</th><th>giorno</th><th>ora</th><th>cat.</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
-        </thead>
-        <tbody>
-<tr><td>14/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0915AAA0111</td></tr>
-<tr><td>21/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0211</td></tr>
-<tr><td>22/03/2026</td><td>domenica</td><td>10:30</td><td>U12</td><td>Andata</td><td>FIORENTINA BASEBALL</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Firenze (FI)</td><td>B0912AAA0213</td></tr>
-<tr><td>28/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>C.S.D. YMCA</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Castiglione Della Pescaia (GR)</td><td>B0915AAA0314</td></tr>
-<tr><td>29/03/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lancers Baseball Club A.S.D.</td><td>Livorno (LI)</td><td>B0912AAA0311</td></tr>
-<tr><td>04/04/2026</td><td>sabato</td><td>11:00</td><td>U12</td><td>Andata</td><td>ETRUSCAN FIGHTERS</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0912AAA0111</td></tr>
-<tr><td>11/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAA0411</td></tr>
-<tr><td>12/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno 1948 Baseball A.S.D.</td><td>Arezzo (AR)</td><td>B00SBACA0114</td></tr>
-<tr><td>12/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Capannori (LU)</td><td>B0912AAA0411</td></tr>
-<tr><td>12/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>ASD COSMOS</td><td>Livorno (LI)</td><td>B00SCAHA0113</td></tr>
-<tr><td>12/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno 1948 Baseball A.S.D.</td><td>Arezzo (AR)</td><td>B00SBACA0214</td></tr>
-<tr><td>18/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAA0511</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0312</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>CHIANTELLERONI</td><td>Livorno (LI)</td><td>B0912AAA0512</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>Siena B.S.C.</td><td>DRK SPORT-LIVORNO 1948</td><td>Monteriggioni (SI)</td><td>B00SCAHA0212</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0412</td></tr>
-<tr><td>25/04/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Sesto Fiorentino (FI)</td><td>B00SBACA0511</td></tr>
-<tr><td>25/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LANCERS B.C. A.S.D.</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lastra A Signa (FI)</td><td>B0915AAA0613</td></tr>
-<tr><td>25/04/2026</td><td>sabato</td><td>20:00</td><td>Serie B</td><td>Andata</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Sesto Fiorentino (FI)</td><td>B00SBACA0611</td></tr>
-<tr><td>26/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Padule Mosquitos</td><td>Livorno (LI)</td><td>B0912AAA0611</td></tr>
-<tr><td>26/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>Padule Sestese</td><td>Livorno (LI)</td><td>B00SCAHA0312</td></tr>
-<tr><td>02/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAA0711</td></tr>
-<tr><td>03/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>DRK SPORT-LIVORNO 1948</td><td>Firenze</td><td>B00SCAHA0411</td></tr>
-<tr><td>09/05/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA0913</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>10:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA1013</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>Serie C</td><td>Andata</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>DRK SPORT-LIVORNO 1948</td><td>Monteriggioni (SI)</td><td>B00SCAHA0512</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B0912AAR0111</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0915AAR0111</td></tr>
-<tr><td>16/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>BIG MAT BSCGROSSETO</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Grosseto (GR)</td><td>B0915AAR0211</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno 1948 Baseball A.S.D.</td><td>Bologna</td><td>B00SBACA1112</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0912AAR0213</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>A.S.D. Nuove Pantere Lucca</td><td>Livorno (LI)</td><td>B00SCAHA0613</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno 1948 Baseball A.S.D.</td><td>Bologna</td><td>B00SBACA1212</td></tr>
-<tr><td>23/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0314</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0713</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>Lancers Baseball Club A.S.D.</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lastra A Signa (FI)</td><td>B0912AAR0311</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>DRK SPORT-LIVORNO 1948</td><td>Grosseto</td><td>B00SCAHA0711</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0813</td></tr>
-<tr><td>30/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>SB MONTECHIANTI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Monteriggioni (SI)</td><td>B0915AAR0411</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1312</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0912AAR0411</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1412</td></tr>
-<tr><td>06/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>FIORENTINA BASEBALL</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Firenze (FI)</td><td>B0915AAR0511</td></tr>
-<tr><td>07/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0114</td></tr>
-<tr><td>07/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>ASD COSMOS</td><td>DRK SPORT-LIVORNO 1948</td><td>San Casciano In Val Di Pesa</td><td>B00SCAHR0113</td></tr>
-<tr><td>07/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0214</td></tr>
-<tr><td>13/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAR0613</td></tr>
-<tr><td>14/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>LANCERS B.C. A.S.D.</td><td>Livorno 1948 Baseball A.S.D.</td><td>Lastra A Signa (FI)</td><td>B00SBACR0312</td></tr>
-<tr><td>14/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>Siena B.S.C.</td><td>Livorno (LI)</td><td>B00SCAHR0212</td></tr>
-<tr><td>14/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>LANCERS B.C. A.S.D.</td><td>Livorno 1948 Baseball A.S.D.</td><td>Lastra A Signa (FI)</td><td>B00SBACR0412</td></tr>
-<tr><td>20/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>Polisportiva Padule Baseball</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Sesto Fiorentino (FI)</td><td>B0915AAR0711</td></tr>
-<tr><td>21/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0511</td></tr>
-<tr><td>21/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>Padule Sestese</td><td>DRK SPORT-LIVORNO 1948</td><td>Sesto Fiorentino (FI)</td><td>B00SCAHR0312</td></tr>
-<tr><td>21/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0611</td></tr>
-<tr><td>27/06/2026</td><td>sabato</td><td>15:30</td><td>U12</td><td>Ritorno</td><td>Padule Mosquitos</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Sesto Fiorentino (FI)</td><td>B0912AAR0611</td></tr>
-<tr><td>28/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>ETRUSCAN FIGHTERS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Castiglione Della Pescaia (GR)</td><td>B00SBACR0713</td></tr>
-<tr><td>28/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>Livorno (LI)</td><td>B00SCAHR0411</td></tr>
-<tr><td>28/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>ETRUSCAN FIGHTERS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Castiglione Della Pescaia (GR)</td><td>B00SBACR0813</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td>10:30</td><td>U12</td><td>Ritorno</td><td>CHIANTELLERONI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Bagno A Ripoli (FI)</td><td>B0912AAR0512</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>CALI ROMA SPRINT 24</td><td>Livorno 1948 Baseball A.S.D.</td><td>Roma</td><td>B00SBACR0913</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>Livorno (LI)</td><td>B00SCAHR0512</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>CALI ROMA SPRINT 24</td><td>Livorno 1948 Baseball A.S.D.</td><td>Roma</td><td>B00SBACR1013</td></tr>
-<tr><td>12/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1112</td></tr>
-<tr><td>12/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>A.S.D. Nuove Pantere Lucca</td><td>DRK SPORT-LIVORNO 1948</td><td>Lastra A Signa (FI)</td><td>B00SCAHR0613</td></tr>
-<tr><td>12/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1212</td></tr>
-<tr><td>19/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>Livorno (LI)</td><td>B00SCAHR0711</td></tr>
-<tr><td>26/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno 1948 Baseball A.S.D.</td><td>Colorno (PR)</td><td>B00SBACR1312</td></tr>
-<tr><td>26/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno 1948 Baseball A.S.D.</td><td>Colorno (PR)</td><td>B00SBACR1412</td></tr>
-        </tbody>
-      </table>
-    </div></div><div class="tab-panel" id="panel-tab-1"><div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>data</th><th>giorno</th><th>ora</th><th>cat.</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
-        </thead>
-        <tbody>
-<tr><td>12/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno 1948 Baseball A.S.D.</td><td>Arezzo (AR)</td><td>B00SBACA0114</td></tr>
-<tr><td>12/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno 1948 Baseball A.S.D.</td><td>Arezzo (AR)</td><td>B00SBACA0214</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0312</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0412</td></tr>
-<tr><td>25/04/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Sesto Fiorentino (FI)</td><td>B00SBACA0511</td></tr>
-<tr><td>25/04/2026</td><td>sabato</td><td>20:00</td><td>Serie B</td><td>Andata</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Sesto Fiorentino (FI)</td><td>B00SBACA0611</td></tr>
-<tr><td>09/05/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA0913</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>10:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA1013</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno 1948 Baseball A.S.D.</td><td>Bologna</td><td>B00SBACA1112</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno 1948 Baseball A.S.D.</td><td>Bologna</td><td>B00SBACA1212</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0713</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0813</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1312</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1412</td></tr>
-<tr><td>07/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0114</td></tr>
-<tr><td>07/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0214</td></tr>
-<tr><td>14/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>LANCERS B.C. A.S.D.</td><td>Livorno 1948 Baseball A.S.D.</td><td>Lastra A Signa (FI)</td><td>B00SBACR0312</td></tr>
-<tr><td>14/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>LANCERS B.C. A.S.D.</td><td>Livorno 1948 Baseball A.S.D.</td><td>Lastra A Signa (FI)</td><td>B00SBACR0412</td></tr>
-<tr><td>21/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0511</td></tr>
-<tr><td>21/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0611</td></tr>
-<tr><td>28/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>ETRUSCAN FIGHTERS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Castiglione Della Pescaia (GR)</td><td>B00SBACR0713</td></tr>
-<tr><td>28/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>ETRUSCAN FIGHTERS</td><td>Livorno 1948 Baseball A.S.D.</td><td>Castiglione Della Pescaia (GR)</td><td>B00SBACR0813</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>CALI ROMA SPRINT 24</td><td>Livorno 1948 Baseball A.S.D.</td><td>Roma</td><td>B00SBACR0913</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>CALI ROMA SPRINT 24</td><td>Livorno 1948 Baseball A.S.D.</td><td>Roma</td><td>B00SBACR1013</td></tr>
-<tr><td>12/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1112</td></tr>
-<tr><td>12/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1212</td></tr>
-<tr><td>26/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno 1948 Baseball A.S.D.</td><td>Colorno (PR)</td><td>B00SBACR1312</td></tr>
-<tr><td>26/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno 1948 Baseball A.S.D.</td><td>Colorno (PR)</td><td>B00SBACR1412</td></tr>
-        </tbody>
-      </table>
-    </div></div><div class="tab-panel" id="panel-tab-2"><div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>data</th><th>giorno</th><th>ora</th><th>cat.</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
-        </thead>
-        <tbody>
-<tr><td>12/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>ASD COSMOS</td><td>Livorno (LI)</td><td>B00SCAHA0113</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>Siena B.S.C.</td><td>DRK SPORT-LIVORNO 1948</td><td>Monteriggioni (SI)</td><td>B00SCAHA0212</td></tr>
-<tr><td>26/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>Padule Sestese</td><td>Livorno (LI)</td><td>B00SCAHA0312</td></tr>
-<tr><td>03/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>DRK SPORT-LIVORNO 1948</td><td>Firenze</td><td>B00SCAHA0411</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>Serie C</td><td>Andata</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>DRK SPORT-LIVORNO 1948</td><td>Monteriggioni (SI)</td><td>B00SCAHA0512</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>A.S.D. Nuove Pantere Lucca</td><td>Livorno (LI)</td><td>B00SCAHA0613</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>DRK SPORT-LIVORNO 1948</td><td>Grosseto</td><td>B00SCAHA0711</td></tr>
-<tr><td>07/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>ASD COSMOS</td><td>DRK SPORT-LIVORNO 1948</td><td>San Casciano In Val Di Pesa</td><td>B00SCAHR0113</td></tr>
-<tr><td>14/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>Siena B.S.C.</td><td>Livorno (LI)</td><td>B00SCAHR0212</td></tr>
-<tr><td>21/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>Padule Sestese</td><td>DRK SPORT-LIVORNO 1948</td><td>Sesto Fiorentino (FI)</td><td>B00SCAHR0312</td></tr>
-<tr><td>28/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>Livorno (LI)</td><td>B00SCAHR0411</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>Livorno (LI)</td><td>B00SCAHR0512</td></tr>
-<tr><td>12/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>A.S.D. Nuove Pantere Lucca</td><td>DRK SPORT-LIVORNO 1948</td><td>Lastra A Signa (FI)</td><td>B00SCAHR0613</td></tr>
-<tr><td>19/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>Livorno (LI)</td><td>B00SCAHR0711</td></tr>
-        </tbody>
-      </table>
-    </div></div><div class="tab-panel" id="panel-tab-3"><div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>data</th><th>giorno</th><th>ora</th><th>cat.</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
-        </thead>
-        <tbody>
-<tr><td>14/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0915AAA0111</td></tr>
-<tr><td>21/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0211</td></tr>
-<tr><td>28/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>C.S.D. YMCA</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Castiglione Della Pescaia (GR)</td><td>B0915AAA0314</td></tr>
-<tr><td>11/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAA0411</td></tr>
-<tr><td>18/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAA0511</td></tr>
-<tr><td>25/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LANCERS B.C. A.S.D.</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lastra A Signa (FI)</td><td>B0915AAA0613</td></tr>
-<tr><td>02/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAA0711</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0915AAR0111</td></tr>
-<tr><td>16/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>BIG MAT BSCGROSSETO</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Grosseto (GR)</td><td>B0915AAR0211</td></tr>
-<tr><td>23/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0314</td></tr>
-<tr><td>30/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>SB MONTECHIANTI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Monteriggioni (SI)</td><td>B0915AAR0411</td></tr>
-<tr><td>06/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>FIORENTINA BASEBALL</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Firenze (FI)</td><td>B0915AAR0511</td></tr>
-<tr><td>13/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAR0613</td></tr>
-<tr><td>20/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>Polisportiva Padule Baseball</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Sesto Fiorentino (FI)</td><td>B0915AAR0711</td></tr>
-        </tbody>
-      </table>
-    </div></div><div class="tab-panel" id="panel-tab-4"><div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>data</th><th>giorno</th><th>ora</th><th>cat.</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
-        </thead>
-        <tbody>
-<tr><td>22/03/2026</td><td>domenica</td><td>10:30</td><td>U12</td><td>Andata</td><td>FIORENTINA BASEBALL</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Firenze (FI)</td><td>B0912AAA0213</td></tr>
-<tr><td>29/03/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lancers Baseball Club A.S.D.</td><td>Livorno (LI)</td><td>B0912AAA0311</td></tr>
-<tr><td>04/04/2026</td><td>sabato</td><td>11:00</td><td>U12</td><td>Andata</td><td>ETRUSCAN FIGHTERS</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0912AAA0111</td></tr>
-<tr><td>12/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Capannori (LU)</td><td>B0912AAA0411</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>CHIANTELLERONI</td><td>Livorno (LI)</td><td>B0912AAA0512</td></tr>
-<tr><td>26/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Padule Mosquitos</td><td>Livorno (LI)</td><td>B0912AAA0611</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B0912AAR0111</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0912AAR0213</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>Lancers Baseball Club A.S.D.</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lastra A Signa (FI)</td><td>B0912AAR0311</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0912AAR0411</td></tr>
-<tr><td>27/06/2026</td><td>sabato</td><td>15:30</td><td>U12</td><td>Ritorno</td><td>Padule Mosquitos</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Sesto Fiorentino (FI)</td><td>B0912AAR0611</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td>10:30</td><td>U12</td><td>Ritorno</td><td>CHIANTELLERONI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Bagno A Ripoli (FI)</td><td>B0912AAR0512</td></tr>
-        </tbody>
-      </table>
-    </div></div><div class="tab-panel" id="panel-tab-5"><div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>data</th><th>giorno</th><th>ora</th><th>cat.</th><th>fase</th><th>casa</th><th>ospiti</th><th>luogo</th><th>codice gara</th></tr>
-        </thead>
-        <tbody>
-<tr><td>14/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0915AAA0111</td></tr>
-<tr><td>21/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0211</td></tr>
-<tr><td>28/03/2026</td><td>sabato</td><td>15:30</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAA0311</td></tr>
-<tr><td>29/03/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Lancers Baseball Club A.S.D.</td><td>Livorno (LI)</td><td>B0912AAA0311</td></tr>
-<tr><td>04/04/2026</td><td>sabato</td><td>11:00</td><td>U12</td><td>Andata</td><td>ETRUSCAN FIGHTERS</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Livorno (LI)</td><td>B0912AAA0111</td></tr>
-<tr><td>11/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAA0411</td></tr>
-<tr><td>12/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>ASD COSMOS</td><td>Livorno (LI)</td><td>B00SCAHA0113</td></tr>
-<tr><td>18/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAA0511</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0312</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>CHIANTELLERONI</td><td>Livorno (LI)</td><td>B0912AAA0512</td></tr>
-<tr><td>19/04/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B00SBACA0412</td></tr>
-<tr><td>25/04/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>DRK CAPANNORI</td><td>BIG MAT BSCGROSSETO</td><td>Livorno (LI)</td><td>B0915AAA0611</td></tr>
-<tr><td>26/04/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Padule Mosquitos</td><td>Livorno (LI)</td><td>B0912AAA0611</td></tr>
-<tr><td>26/04/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>Padule Sestese</td><td>Livorno (LI)</td><td>B00SCAHA0312</td></tr>
-<tr><td>02/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Andata</td><td>LIVORNO 1948 BASEBALL ASD</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAA0711</td></tr>
-<tr><td>09/05/2026</td><td>sabato</td><td>15:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA0913</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>10:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>CALI ROMA SPRINT 24</td><td>Livorno (LI)</td><td>B00SBACA1013</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B0912AAR0111</td></tr>
-<tr><td>10/05/2026</td><td>domenica</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0915AAR0111</td></tr>
-<tr><td>16/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0915AAR0214</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>FIORENTINA BASEBALL</td><td>Livorno (LI)</td><td>B0912AAR0213</td></tr>
-<tr><td>17/05/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Andata</td><td>DRK SPORT-LIVORNO 1948</td><td>A.S.D. Nuove Pantere Lucca</td><td>Livorno (LI)</td><td>B00SCAHA0613</td></tr>
-<tr><td>23/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0314</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0713</td></tr>
-<tr><td>24/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>ETRUSCAN FIGHTERS</td><td>Livorno (LI)</td><td>B00SBACA0813</td></tr>
-<tr><td>30/05/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>Polisportiva Padule Baseball</td><td>Livorno (LI)</td><td>B0915AAR0413</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1312</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td>11:00</td><td>U12</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>DRK CAPANNORI</td><td>Livorno (LI)</td><td>B0912AAR0411</td></tr>
-<tr><td>31/05/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Andata</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. Colorno Baseball Club</td><td>Livorno (LI)</td><td>B00SBACA1412</td></tr>
-<tr><td>06/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>SB MONTECHIANTI</td><td>Livorno (LI)</td><td>B0915AAR0512</td></tr>
-<tr><td>07/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0114</td></tr>
-<tr><td>07/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>A.S.D. BASEBALL S.C. AREZZO</td><td>Livorno (LI)</td><td>B00SBACR0214</td></tr>
-<tr><td>13/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>LIVORNO 1948 BASEBALL ASD</td><td>LANCERS B.C. A.S.D.</td><td>Livorno (LI)</td><td>B0915AAR0613</td></tr>
-<tr><td>14/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>Siena B.S.C.</td><td>Livorno (LI)</td><td>B00SCAHR0212</td></tr>
-<tr><td>20/06/2026</td><td>sabato</td><td>16:00</td><td>U15</td><td>Ritorno</td><td>DRK CAPANNORI</td><td>C.S.D. YMCA</td><td>Livorno (LI)</td><td>B0915AAR0713</td></tr>
-<tr><td>21/06/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0511</td></tr>
-<tr><td>21/06/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>POLISPORTIVA PADULE BAS</td><td>Livorno (LI)</td><td>B00SBACR0611</td></tr>
-<tr><td>28/06/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>FIORENTINA BASEBALL E SOFTBALL</td><td>Livorno (LI)</td><td>B00SCAHR0411</td></tr>
-<tr><td>05/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>SIENA BASEBALL MONTERIGGIONI A.S.D.</td><td>Livorno (LI)</td><td>B00SCAHR0512</td></tr>
-<tr><td>12/07/2026</td><td>domenica</td><td>11:00</td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1112</td></tr>
-<tr><td>12/07/2026</td><td>domenica</td><td></td><td>Serie B</td><td>Ritorno</td><td>Livorno 1948 Baseball A.S.D.</td><td>LONGBRIDGE 2000 BOLOGNA</td><td>Livorno (LI)</td><td>B00SBACR1212</td></tr>
-<tr><td>19/07/2026</td><td>domenica</td><td>15:00</td><td>Serie C</td><td>Ritorno</td><td>DRK SPORT-LIVORNO 1948</td><td>PHOENIX B. &amp; S. CLUB ASD</td><td>Livorno (LI)</td><td>B00SCAHR0711</td></tr>
-        </tbody>
-      </table>
-    </div></div>
+        <div class="tab-panel" id="panel-tab-0"><div class="cards"><div class="card">
+  <div class="card-top">
+    <div class="date">14/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">BIG MAT BSCGROSSETO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0211</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">22/03/2026</div>
+    <div class="time">10:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA BASEBALL</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0213</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">C.S.D. YMCA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0314</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">29/03/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Lancers Baseball Club A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0311</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">04/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">11/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SB MONTECHIANTI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Arezzo (AR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0114</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Capannori (LU)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ASD COSMOS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0113</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Arezzo (AR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0214</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">18/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CHIANTELLERONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Siena B.S.C.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0412</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">20:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Padule Mosquitos</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Padule Sestese</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">02/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Polisportiva Padule Baseball</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0711</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">03/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA BASEBALL E SOFTBALL</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">09/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA SPRINT 24</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0913</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">10:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA SPRINT 24</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1013</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">SIENA BASEBALL MONTERIGGIONI A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK CAPANNORI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">16/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">BIG MAT BSCGROSSETO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0211</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bologna</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1112</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0213</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Nuove Pantere Lucca</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bologna</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">23/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">C.S.D. YMCA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0314</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0713</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Lancers Baseball Club A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0311</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PHOENIX B. &amp; S. CLUB ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0711</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0813</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">30/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">SB MONTECHIANTI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK CAPANNORI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1412</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">06/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA BASEBALL</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0114</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ASD COSMOS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">San Casciano In Val Di Pesa</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0113</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0214</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">13/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Siena B.S.C.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0412</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">20/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Polisportiva Padule Baseball</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0711</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Padule Sestese</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">27/06/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Padule Mosquitos</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0713</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL E SOFTBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0813</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">10:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CHIANTELLERONI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bagno A Ripoli (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CALI ROMA SPRINT 24</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Roma</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0913</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SIENA BASEBALL MONTERIGGIONI A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CALI ROMA SPRINT 24</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Roma</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1013</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1112</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. Nuove Pantere Lucca</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PHOENIX B. &amp; S. CLUB ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0711</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Colorno (PR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Colorno (PR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1412</span>
+  </div>
+</div></div></div><div class="tab-panel" id="panel-tab-1"><div class="cards"><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Arezzo (AR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0114</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Arezzo (AR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0214</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0412</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">20:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">09/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA SPRINT 24</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0913</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">10:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA SPRINT 24</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1013</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bologna</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1112</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bologna</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0713</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0813</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1412</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0114</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0214</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0412</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0713</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0813</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CALI ROMA SPRINT 24</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Roma</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0913</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CALI ROMA SPRINT 24</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Roma</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1013</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1112</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Colorno (PR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Colorno (PR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1412</span>
+  </div>
+</div></div></div><div class="tab-panel" id="panel-tab-2"><div class="cards"><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ASD COSMOS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0113</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Siena B.S.C.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Padule Sestese</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">03/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA BASEBALL E SOFTBALL</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">SIENA BASEBALL MONTERIGGIONI A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Nuove Pantere Lucca</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PHOENIX B. &amp; S. CLUB ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0711</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ASD COSMOS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">San Casciano In Val Di Pesa</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0113</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Siena B.S.C.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Padule Sestese</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL E SOFTBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SIENA BASEBALL MONTERIGGIONI A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">A.S.D. Nuove Pantere Lucca</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PHOENIX B. &amp; S. CLUB ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0711</span>
+  </div>
+</div></div></div><div class="tab-panel" id="panel-tab-3"><div class="cards"><div class="card">
+  <div class="card-top">
+    <div class="date">14/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">BIG MAT BSCGROSSETO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0211</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">C.S.D. YMCA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0314</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">11/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SB MONTECHIANTI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">18/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">02/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Polisportiva Padule Baseball</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0711</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK CAPANNORI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">16/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">BIG MAT BSCGROSSETO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0211</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">23/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">C.S.D. YMCA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0314</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">30/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">SB MONTECHIANTI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">06/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA BASEBALL</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">13/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">20/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Polisportiva Padule Baseball</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0711</span>
+  </div>
+</div></div></div><div class="tab-panel" id="panel-tab-4"><div class="cards"><div class="card">
+  <div class="card-top">
+    <div class="date">22/03/2026</div>
+    <div class="time">10:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA BASEBALL</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0213</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">29/03/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Lancers Baseball Club A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0311</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">04/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Capannori (LU)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CHIANTELLERONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Padule Mosquitos</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0213</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Lancers Baseball Club A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0311</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK CAPANNORI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">27/06/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Padule Mosquitos</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">10:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CHIANTELLERONI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bagno A Ripoli (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0512</span>
+  </div>
+</div></div></div><div class="tab-panel" id="panel-tab-5"><div class="cards"><div class="card">
+  <div class="card-top">
+    <div class="date">14/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">BIG MAT BSCGROSSETO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0211</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0311</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">29/03/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Lancers Baseball Club A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0311</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">04/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">11/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SB MONTECHIANTI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ASD COSMOS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0113</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">18/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CHIANTELLERONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0412</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">BIG MAT BSCGROSSETO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Padule Mosquitos</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Padule Sestese</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">02/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Polisportiva Padule Baseball</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0711</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">09/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA SPRINT 24</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0913</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">10:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA SPRINT 24</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1013</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK CAPANNORI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0111</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">16/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0214</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0213</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Nuove Pantere Lucca</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">23/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">C.S.D. YMCA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0314</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0713</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0813</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">30/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Polisportiva Padule Baseball</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0413</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1312</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK CAPANNORI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. Colorno Baseball Club</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1412</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">06/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SB MONTECHIANTI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0114</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">A.S.D. BASEBALL S.C. AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0214</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">13/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS B.C. A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0613</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">Siena B.S.C.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">20/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK CAPANNORI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">C.S.D. YMCA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0713</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0511</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">POLISPORTIVA PADULE BAS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0611</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA BASEBALL E SOFTBALL</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0411</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SIENA BASEBALL MONTERIGGIONI A.S.D.</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0512</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1112</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">Livorno 1948 Baseball A.S.D.</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE 2000 BOLOGNA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1212</span>
+  </div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="date">19/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PHOENIX B. &amp; S. CLUB ASD</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0711</span>
+  </div>
+</div></div></div>
       </div>
     </div>
   </div>
