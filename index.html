@@ -170,9 +170,10 @@
     }
     @media (max-width: 900px) {
       .title {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         gap: 12px;
+        flex-wrap: wrap;
       }
       .title-right {
         margin-left: 0;
@@ -217,9 +218,9 @@
       <h1>Calendario 2026</h1>
     </div>
     <div class="tabs">
-      <input type="radio" name="tabs" id="tab-0" checked><input type="radio" name="tabs" id="tab-1"><input type="radio" name="tabs" id="tab-2"><input type="radio" name="tabs" id="tab-3"><input type="radio" name="tabs" id="tab-4"><input type="radio" name="tabs" id="tab-5">
+      <input type="radio" name="tabs" id="tab-0" data-hash="" checked><input type="radio" name="tabs" id="tab-1" data-hash="serie-b"><input type="radio" name="tabs" id="tab-2" data-hash="serie-c"><input type="radio" name="tabs" id="tab-3" data-hash="u15"><input type="radio" name="tabs" id="tab-4" data-hash="u12"><input type="radio" name="tabs" id="tab-5" data-hash="sisi">
       <div class="tab-controls">
-        <label for="tab-0">Tutte</label><label for="tab-1">Serie B</label><label for="tab-2">Serie C</label><label for="tab-3">U15</label><label for="tab-4">U12</label><label for="tab-5">STADIO A. SISI</label>
+        <label for="tab-0" data-hash="">Tutte</label><label for="tab-1" data-hash="serie-b">Serie B</label><label for="tab-2" data-hash="serie-c">Serie C</label><label for="tab-3" data-hash="u15">U15</label><label for="tab-4" data-hash="u12">U12</label><label for="tab-5" data-hash="sisi">STADIO A. SISI</label>
       </div>
       <div class="tab-panels">
         <div class="tab-panel" id="panel-tab-0"><div class="cards"><div class="card">
@@ -348,7 +349,7 @@
   </div>
   <div class="place">
     <span class="label">Luogo</span>
-    <span class="value">Livorno (LI)</span>
+    <span class="value">Grosseto (GR)</span>
   </div>
   <div class="code">
     <span class="label">Codice gara</span>
@@ -3010,7 +3011,7 @@
   </div>
   <div class="place">
     <span class="label">Luogo</span>
-    <span class="value">Livorno (LI)</span>
+    <span class="value">Grosseto (GR)</span>
   </div>
   <div class="code">
     <span class="label">Codice gara</span>
@@ -3301,28 +3302,6 @@
   <div class="code">
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0311</span>
-  </div>
-</div><div class="card">
-  <div class="card-top">
-    <div class="date">04/04/2026</div>
-    <div class="time">11:00</div>
-  </div>
-  <div class="meta">
-    <span class="chip">sabato</span>
-    <span class="chip">U12</span>
-    <span class="chip">Andata</span>
-  </div>
-  <div class="teams">
-    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
-    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948 BASEBALL ASD</span></div>
-  </div>
-  <div class="place">
-    <span class="label">Luogo</span>
-    <span class="value">Livorno (LI)</span>
-  </div>
-  <div class="code">
-    <span class="label">Codice gara</span>
-    <span class="value">B0912AAA0111</span>
   </div>
 </div><div class="card">
   <div class="card-top">
@@ -4142,5 +4121,31 @@
       </div>
     </div>
   </div>
+  <script>
+    (function () {
+      const inputs = Array.from(document.querySelectorAll('.tabs input[type="radio"]'));
+      function setActiveFromHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (!hash) return;
+        const input = inputs.find(i => i.dataset.hash === hash);
+        if (input) {
+          input.checked = true;
+        }
+      }
+      function syncHashFromInput(input) {
+        const hash = input.dataset.hash || '';
+        if (hash) {
+          history.replaceState(null, '', '#' + hash);
+        } else {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+      }
+      inputs.forEach(input => {
+        input.addEventListener('change', () => syncHashFromInput(input));
+      });
+      setActiveFromHash();
+      window.addEventListener('hashchange', setActiveFromHash);
+    })();
+  </script>
 </body>
 </html>
