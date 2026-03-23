@@ -92,6 +92,24 @@
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 18px;
     }
+    .match-groups {
+      display: grid;
+      gap: 28px;
+    }
+    .match-group {
+      display: grid;
+      gap: 14px;
+    }
+    .section-title {
+      margin: 0;
+      padding-top: 6px;
+      border-top: 2px solid var(--table-border);
+      font-size: 28px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--head-bg);
+    }
     .card {
       background: #fff;
       border: 1px solid var(--table-border);
@@ -168,6 +186,9 @@
       color: var(--muted);
       font-weight: 600;
     }
+    [hidden] {
+      display: none !important;
+    }
     @media (max-width: 900px) {
       .title {
         flex-direction: row;
@@ -196,6 +217,9 @@
       .cards {
         grid-template-columns: 1fr;
       }
+      .section-title {
+        font-size: 22px;
+      }
       .card {
         padding: 14px;
       }
@@ -223,7 +247,10 @@
         <label for="tab-0" data-hash="">Tutte</label><label for="tab-1" data-hash="serie-b">Serie B</label><label for="tab-2" data-hash="serie-c">Serie C</label><label for="tab-3" data-hash="u15">U15</label><label for="tab-4" data-hash="u12">U12</label><label for="tab-5" data-hash="sisi">STADIO A. SISI</label>
       </div>
       <div class="tab-panels">
-        <div class="tab-panel" id="panel-tab-0"><div class="cards"><div class="card">
+        <div class="tab-panel" id="panel-tab-0"><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="14/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">14/03/2026</div>
     <div class="time">15:30</div>
@@ -245,7 +272,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">21/03/2026</div>
     <div class="time">15:30</div>
@@ -267,7 +294,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0211</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="22/03/2026" data-time="10:30">
   <div class="card-top">
     <div class="date">22/03/2026</div>
     <div class="time">10:30</div>
@@ -289,7 +316,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0213</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">28/03/2026</div>
     <div class="time">15:30</div>
@@ -311,7 +338,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0314</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="29/03/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">29/03/2026</div>
     <div class="time">11:00</div>
@@ -333,7 +360,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0311</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="04/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">04/04/2026</div>
     <div class="time">11:00</div>
@@ -355,7 +382,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="11/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">11/04/2026</div>
     <div class="time">16:00</div>
@@ -377,7 +404,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time">11:00</div>
@@ -399,7 +426,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0114</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time">11:00</div>
@@ -421,7 +448,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time">15:00</div>
@@ -443,7 +470,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0113</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/04/2026" data-time="">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time"></div>
@@ -465,7 +492,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0214</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="18/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">18/04/2026</div>
     <div class="time">16:00</div>
@@ -487,7 +514,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time">11:00</div>
@@ -509,7 +536,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time">11:00</div>
@@ -531,7 +558,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time">15:00</div>
@@ -553,7 +580,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time"></div>
@@ -575,7 +602,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0412</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="25/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">25/04/2026</div>
     <div class="time">15:00</div>
@@ -597,7 +624,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="25/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">25/04/2026</div>
     <div class="time">16:00</div>
@@ -619,7 +646,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="25/04/2026" data-time="20:00">
   <div class="card-top">
     <div class="date">25/04/2026</div>
     <div class="time">20:00</div>
@@ -641,7 +668,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">26/04/2026</div>
     <div class="time">11:00</div>
@@ -663,7 +690,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">26/04/2026</div>
     <div class="time">15:00</div>
@@ -685,7 +712,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="02/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">02/05/2026</div>
     <div class="time">16:00</div>
@@ -707,7 +734,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0711</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="03/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">03/05/2026</div>
     <div class="time">15:00</div>
@@ -729,7 +756,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="09/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">09/05/2026</div>
     <div class="time">15:00</div>
@@ -751,7 +778,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0913</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="10:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">10:00</div>
@@ -773,7 +800,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1013</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">11:00</div>
@@ -795,7 +822,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">11:00</div>
@@ -817,7 +844,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">16:00</div>
@@ -839,7 +866,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="16/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">16/05/2026</div>
     <div class="time">16:00</div>
@@ -861,7 +888,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0211</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time">11:00</div>
@@ -883,7 +910,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1112</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time">11:00</div>
@@ -905,7 +932,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0213</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time">15:00</div>
@@ -927,7 +954,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time"></div>
@@ -949,7 +976,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="23/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">23/05/2026</div>
     <div class="time">16:00</div>
@@ -971,7 +998,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0314</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time">11:00</div>
@@ -993,7 +1020,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0713</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time">11:00</div>
@@ -1015,7 +1042,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0311</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time">15:00</div>
@@ -1037,7 +1064,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0711</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time"></div>
@@ -1059,7 +1086,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0813</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="30/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">30/05/2026</div>
     <div class="time">16:00</div>
@@ -1081,7 +1108,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time">11:00</div>
@@ -1103,7 +1130,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time">11:00</div>
@@ -1125,7 +1152,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time"></div>
@@ -1147,7 +1174,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1412</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="06/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">06/06/2026</div>
     <div class="time">16:00</div>
@@ -1169,7 +1196,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="07/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">07/06/2026</div>
     <div class="time">11:00</div>
@@ -1191,7 +1218,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0114</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="07/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">07/06/2026</div>
     <div class="time">15:00</div>
@@ -1213,7 +1240,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0113</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="07/06/2026" data-time="">
   <div class="card-top">
     <div class="date">07/06/2026</div>
     <div class="time"></div>
@@ -1235,7 +1262,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0214</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="13/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">13/06/2026</div>
     <div class="time">16:00</div>
@@ -1257,7 +1284,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="14/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">14/06/2026</div>
     <div class="time">11:00</div>
@@ -1279,7 +1306,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="14/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">14/06/2026</div>
     <div class="time">15:00</div>
@@ -1301,7 +1328,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="14/06/2026" data-time="">
   <div class="card-top">
     <div class="date">14/06/2026</div>
     <div class="time"></div>
@@ -1323,7 +1350,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0412</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="20/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">20/06/2026</div>
     <div class="time">16:00</div>
@@ -1345,7 +1372,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0711</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">21/06/2026</div>
     <div class="time">11:00</div>
@@ -1367,7 +1394,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">21/06/2026</div>
     <div class="time">15:00</div>
@@ -1389,7 +1416,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/06/2026" data-time="">
   <div class="card-top">
     <div class="date">21/06/2026</div>
     <div class="time"></div>
@@ -1411,7 +1438,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="27/06/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">27/06/2026</div>
     <div class="time">15:30</div>
@@ -1433,7 +1460,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">28/06/2026</div>
     <div class="time">11:00</div>
@@ -1455,7 +1482,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0713</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">28/06/2026</div>
     <div class="time">15:00</div>
@@ -1477,7 +1504,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/06/2026" data-time="">
   <div class="card-top">
     <div class="date">28/06/2026</div>
     <div class="time"></div>
@@ -1499,7 +1526,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0813</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="10:30">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time">10:30</div>
@@ -1521,7 +1548,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time">11:00</div>
@@ -1543,7 +1570,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0913</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time">15:00</div>
@@ -1565,7 +1592,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time"></div>
@@ -1587,7 +1614,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1013</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/07/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">12/07/2026</div>
     <div class="time">11:00</div>
@@ -1609,7 +1636,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1112</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/07/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">12/07/2026</div>
     <div class="time">15:00</div>
@@ -1631,7 +1658,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/07/2026" data-time="">
   <div class="card-top">
     <div class="date">12/07/2026</div>
     <div class="time"></div>
@@ -1653,7 +1680,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/07/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">19/07/2026</div>
     <div class="time">15:00</div>
@@ -1675,7 +1702,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0711</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/07/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">26/07/2026</div>
     <div class="time">11:00</div>
@@ -1697,7 +1724,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/07/2026" data-time="">
   <div class="card-top">
     <div class="date">26/07/2026</div>
     <div class="time"></div>
@@ -1719,7 +1746,16 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1412</span>
   </div>
-</div></div></div><div class="tab-panel" id="panel-tab-1"><div class="cards"><div class="card">
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-1"><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="12/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time">11:00</div>
@@ -1741,7 +1777,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0114</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/04/2026" data-time="">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time"></div>
@@ -1763,7 +1799,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0214</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time">11:00</div>
@@ -1785,7 +1821,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time"></div>
@@ -1807,7 +1843,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0412</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="25/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">25/04/2026</div>
     <div class="time">15:00</div>
@@ -1829,7 +1865,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="25/04/2026" data-time="20:00">
   <div class="card-top">
     <div class="date">25/04/2026</div>
     <div class="time">20:00</div>
@@ -1851,7 +1887,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="09/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">09/05/2026</div>
     <div class="time">15:00</div>
@@ -1873,7 +1909,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0913</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="10:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">10:00</div>
@@ -1895,7 +1931,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1013</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time">11:00</div>
@@ -1917,7 +1953,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1112</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time"></div>
@@ -1939,7 +1975,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time">11:00</div>
@@ -1961,7 +1997,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0713</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time"></div>
@@ -1983,7 +2019,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0813</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time">11:00</div>
@@ -2005,7 +2041,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time"></div>
@@ -2027,7 +2063,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1412</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="07/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">07/06/2026</div>
     <div class="time">11:00</div>
@@ -2049,7 +2085,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0114</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="07/06/2026" data-time="">
   <div class="card-top">
     <div class="date">07/06/2026</div>
     <div class="time"></div>
@@ -2071,7 +2107,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0214</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="14/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">14/06/2026</div>
     <div class="time">11:00</div>
@@ -2093,7 +2129,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="14/06/2026" data-time="">
   <div class="card-top">
     <div class="date">14/06/2026</div>
     <div class="time"></div>
@@ -2115,7 +2151,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0412</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">21/06/2026</div>
     <div class="time">11:00</div>
@@ -2137,7 +2173,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/06/2026" data-time="">
   <div class="card-top">
     <div class="date">21/06/2026</div>
     <div class="time"></div>
@@ -2159,7 +2195,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">28/06/2026</div>
     <div class="time">11:00</div>
@@ -2181,7 +2217,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0713</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/06/2026" data-time="">
   <div class="card-top">
     <div class="date">28/06/2026</div>
     <div class="time"></div>
@@ -2203,7 +2239,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0813</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time">11:00</div>
@@ -2225,7 +2261,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0913</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time"></div>
@@ -2247,7 +2283,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1013</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/07/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">12/07/2026</div>
     <div class="time">11:00</div>
@@ -2269,7 +2305,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1112</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/07/2026" data-time="">
   <div class="card-top">
     <div class="date">12/07/2026</div>
     <div class="time"></div>
@@ -2291,7 +2327,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/07/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">26/07/2026</div>
     <div class="time">11:00</div>
@@ -2313,7 +2349,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/07/2026" data-time="">
   <div class="card-top">
     <div class="date">26/07/2026</div>
     <div class="time"></div>
@@ -2335,7 +2371,16 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1412</span>
   </div>
-</div></div></div><div class="tab-panel" id="panel-tab-2"><div class="cards"><div class="card">
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-2"><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="12/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time">15:00</div>
@@ -2357,7 +2402,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0113</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time">15:00</div>
@@ -2379,7 +2424,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">26/04/2026</div>
     <div class="time">15:00</div>
@@ -2401,7 +2446,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="03/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">03/05/2026</div>
     <div class="time">15:00</div>
@@ -2423,7 +2468,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">11:00</div>
@@ -2445,7 +2490,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time">15:00</div>
@@ -2467,7 +2512,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time">15:00</div>
@@ -2489,7 +2534,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0711</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="07/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">07/06/2026</div>
     <div class="time">15:00</div>
@@ -2511,7 +2556,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0113</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="14/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">14/06/2026</div>
     <div class="time">15:00</div>
@@ -2533,7 +2578,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">21/06/2026</div>
     <div class="time">15:00</div>
@@ -2555,7 +2600,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">28/06/2026</div>
     <div class="time">15:00</div>
@@ -2577,7 +2622,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time">15:00</div>
@@ -2599,7 +2644,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/07/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">12/07/2026</div>
     <div class="time">15:00</div>
@@ -2621,7 +2666,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/07/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">19/07/2026</div>
     <div class="time">15:00</div>
@@ -2643,7 +2688,16 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0711</span>
   </div>
-</div></div></div><div class="tab-panel" id="panel-tab-3"><div class="cards"><div class="card">
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-3"><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="14/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">14/03/2026</div>
     <div class="time">15:30</div>
@@ -2665,7 +2719,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">21/03/2026</div>
     <div class="time">15:30</div>
@@ -2687,7 +2741,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0211</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">28/03/2026</div>
     <div class="time">15:30</div>
@@ -2709,7 +2763,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0314</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="11/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">11/04/2026</div>
     <div class="time">16:00</div>
@@ -2731,7 +2785,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="18/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">18/04/2026</div>
     <div class="time">16:00</div>
@@ -2753,7 +2807,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="25/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">25/04/2026</div>
     <div class="time">16:00</div>
@@ -2775,7 +2829,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="02/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">02/05/2026</div>
     <div class="time">16:00</div>
@@ -2797,7 +2851,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0711</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">16:00</div>
@@ -2819,7 +2873,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="16/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">16/05/2026</div>
     <div class="time">16:00</div>
@@ -2841,7 +2895,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0211</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="23/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">23/05/2026</div>
     <div class="time">16:00</div>
@@ -2863,7 +2917,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0314</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="30/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">30/05/2026</div>
     <div class="time">16:00</div>
@@ -2885,7 +2939,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="06/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">06/06/2026</div>
     <div class="time">16:00</div>
@@ -2907,7 +2961,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="13/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">13/06/2026</div>
     <div class="time">16:00</div>
@@ -2929,7 +2983,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="20/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">20/06/2026</div>
     <div class="time">16:00</div>
@@ -2951,7 +3005,16 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0711</span>
   </div>
-</div></div></div><div class="tab-panel" id="panel-tab-4"><div class="cards"><div class="card">
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-4"><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="22/03/2026" data-time="10:30">
   <div class="card-top">
     <div class="date">22/03/2026</div>
     <div class="time">10:30</div>
@@ -2973,7 +3036,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0213</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="29/03/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">29/03/2026</div>
     <div class="time">11:00</div>
@@ -2995,7 +3058,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0311</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="04/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">04/04/2026</div>
     <div class="time">11:00</div>
@@ -3017,7 +3080,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time">11:00</div>
@@ -3039,7 +3102,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time">11:00</div>
@@ -3061,7 +3124,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">26/04/2026</div>
     <div class="time">11:00</div>
@@ -3083,7 +3146,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">11:00</div>
@@ -3105,7 +3168,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time">11:00</div>
@@ -3127,7 +3190,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0213</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time">11:00</div>
@@ -3149,7 +3212,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0311</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time">11:00</div>
@@ -3171,7 +3234,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="27/06/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">27/06/2026</div>
     <div class="time">15:30</div>
@@ -3193,7 +3256,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="10:30">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time">10:30</div>
@@ -3215,7 +3278,16 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0512</span>
   </div>
-</div></div></div><div class="tab-panel" id="panel-tab-5"><div class="cards"><div class="card">
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-5"><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="14/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">14/03/2026</div>
     <div class="time">15:30</div>
@@ -3237,7 +3309,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">21/03/2026</div>
     <div class="time">15:30</div>
@@ -3259,7 +3331,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0211</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/03/2026" data-time="15:30">
   <div class="card-top">
     <div class="date">28/03/2026</div>
     <div class="time">15:30</div>
@@ -3281,7 +3353,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0311</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="29/03/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">29/03/2026</div>
     <div class="time">11:00</div>
@@ -3303,7 +3375,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0311</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="11/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">11/04/2026</div>
     <div class="time">16:00</div>
@@ -3325,7 +3397,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">12/04/2026</div>
     <div class="time">15:00</div>
@@ -3347,7 +3419,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0113</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="18/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">18/04/2026</div>
     <div class="time">16:00</div>
@@ -3369,7 +3441,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time">11:00</div>
@@ -3391,7 +3463,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time">11:00</div>
@@ -3413,7 +3485,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/04/2026" data-time="">
   <div class="card-top">
     <div class="date">19/04/2026</div>
     <div class="time"></div>
@@ -3435,7 +3507,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0412</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="25/04/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">25/04/2026</div>
     <div class="time">16:00</div>
@@ -3457,7 +3529,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/04/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">26/04/2026</div>
     <div class="time">11:00</div>
@@ -3479,7 +3551,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAA0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="26/04/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">26/04/2026</div>
     <div class="time">15:00</div>
@@ -3501,7 +3573,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="02/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">02/05/2026</div>
     <div class="time">16:00</div>
@@ -3523,7 +3595,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAA0711</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="09/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">09/05/2026</div>
     <div class="time">15:00</div>
@@ -3545,7 +3617,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0913</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="10:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">10:00</div>
@@ -3567,7 +3639,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1013</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">11:00</div>
@@ -3589,7 +3661,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="10/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">10/05/2026</div>
     <div class="time">16:00</div>
@@ -3611,7 +3683,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0111</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="16/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">16/05/2026</div>
     <div class="time">16:00</div>
@@ -3633,7 +3705,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0214</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time">11:00</div>
@@ -3655,7 +3727,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0213</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="17/05/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">17/05/2026</div>
     <div class="time">15:00</div>
@@ -3677,7 +3749,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHA0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="23/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">23/05/2026</div>
     <div class="time">16:00</div>
@@ -3699,7 +3771,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0314</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time">11:00</div>
@@ -3721,7 +3793,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0713</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="24/05/2026" data-time="">
   <div class="card-top">
     <div class="date">24/05/2026</div>
     <div class="time"></div>
@@ -3743,7 +3815,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA0813</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="30/05/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">30/05/2026</div>
     <div class="time">16:00</div>
@@ -3765,7 +3837,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0413</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time">11:00</div>
@@ -3787,7 +3859,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1312</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time">11:00</div>
@@ -3809,7 +3881,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0912AAR0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="31/05/2026" data-time="">
   <div class="card-top">
     <div class="date">31/05/2026</div>
     <div class="time"></div>
@@ -3831,7 +3903,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACA1412</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="06/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">06/06/2026</div>
     <div class="time">16:00</div>
@@ -3853,7 +3925,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="07/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">07/06/2026</div>
     <div class="time">11:00</div>
@@ -3875,7 +3947,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0114</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="07/06/2026" data-time="">
   <div class="card-top">
     <div class="date">07/06/2026</div>
     <div class="time"></div>
@@ -3897,7 +3969,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0214</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="13/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">13/06/2026</div>
     <div class="time">16:00</div>
@@ -3919,7 +3991,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0613</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="14/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">14/06/2026</div>
     <div class="time">15:00</div>
@@ -3941,7 +4013,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="20/06/2026" data-time="16:00">
   <div class="card-top">
     <div class="date">20/06/2026</div>
     <div class="time">16:00</div>
@@ -3963,7 +4035,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B0915AAR0713</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/06/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">21/06/2026</div>
     <div class="time">11:00</div>
@@ -3985,7 +4057,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0511</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="21/06/2026" data-time="">
   <div class="card-top">
     <div class="date">21/06/2026</div>
     <div class="time"></div>
@@ -4007,7 +4079,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR0611</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="28/06/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">28/06/2026</div>
     <div class="time">15:00</div>
@@ -4029,7 +4101,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0411</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="05/07/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">05/07/2026</div>
     <div class="time">15:00</div>
@@ -4051,7 +4123,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0512</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/07/2026" data-time="11:00">
   <div class="card-top">
     <div class="date">12/07/2026</div>
     <div class="time">11:00</div>
@@ -4073,7 +4145,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1112</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="12/07/2026" data-time="">
   <div class="card-top">
     <div class="date">12/07/2026</div>
     <div class="time"></div>
@@ -4095,7 +4167,7 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SBACR1212</span>
   </div>
-</div><div class="card">
+</article><article class="card" data-date="19/07/2026" data-time="15:00">
   <div class="card-top">
     <div class="date">19/07/2026</div>
     <div class="time">15:00</div>
@@ -4117,13 +4189,65 @@
     <span class="label">Codice gara</span>
     <span class="value">B00SCAHR0711</span>
   </div>
-</div></div></div>
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div>
       </div>
     </div>
   </div>
   <script>
     (function () {
       const inputs = Array.from(document.querySelectorAll('.tabs input[type="radio"]'));
+      const panels = Array.from(document.querySelectorAll('.tab-panel'));
+
+      function parseMatchDate(card) {
+        const rawDate = card.dataset.date || '';
+        const match = rawDate.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        if (!match) return null;
+        const [, day, month, year] = match;
+        const rawTime = (card.dataset.time || '').trim();
+        let hours = 23;
+        let minutes = 59;
+        if (rawTime) {
+          const timeMatch = rawTime.match(/^(\d{1,2}):(\d{2})$/);
+          if (timeMatch) {
+            hours = Number(timeMatch[1]);
+            minutes = Number(timeMatch[2]);
+          }
+        }
+        return new Date(Number(year), Number(month) - 1, Number(day), hours, minutes);
+      }
+
+      function partitionMatches(panel) {
+        const upcomingGroup = panel.querySelector('.upcoming-group');
+        const pastGroup = panel.querySelector('.past-group');
+        const upcomingCards = panel.querySelector('.upcoming-cards');
+        const pastCards = panel.querySelector('.past-cards');
+        if (!upcomingGroup || !pastGroup || !upcomingCards || !pastCards) return;
+
+        const cards = Array.from(panel.querySelectorAll('.card'));
+        if (!cards.length) return;
+
+        const now = new Date();
+        cards.forEach(card => {
+          const matchDate = parseMatchDate(card);
+          if (matchDate && matchDate < now) {
+            pastCards.appendChild(card);
+          } else {
+            upcomingCards.appendChild(card);
+          }
+        });
+
+        const hasUpcoming = upcomingCards.children.length > 0;
+        const hasPast = pastCards.children.length > 0;
+        upcomingGroup.hidden = !hasUpcoming;
+        pastGroup.hidden = !hasPast;
+      }
+
       function setActiveFromHash() {
         const hash = window.location.hash.replace('#', '');
         if (!hash) return;
@@ -4143,6 +4267,7 @@
       inputs.forEach(input => {
         input.addEventListener('change', () => syncHashFromInput(input));
       });
+      panels.forEach(partitionMatches);
       setActiveFromHash();
       window.addEventListener('hashchange', setActiveFromHash);
     })();
