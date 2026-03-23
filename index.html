@@ -155,9 +155,17 @@
     }
     .team {
       display: grid;
-      grid-template-columns: 70px 1fr;
+      grid-template-columns: 70px 1fr auto;
       align-items: baseline;
       gap: 10px;
+    }
+    .team-score {
+      min-width: 24px;
+      text-align: right;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--head-bg);
     }
     .label {
       font-size: 13px;
@@ -228,6 +236,9 @@
       }
       .name {
         font-size: 18px;
+      }
+      .team-score {
+        font-size: 24px;
       }
       .value {
         font-size: 15px;
@@ -305,8 +316,8 @@
     <span class="chip">Andata</span>
   </div>
   <div class="teams">
-    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span></div>
-    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span><span class="team-score">17</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span><span class="team-score">16</span></div>
   </div>
   <div class="place">
     <span class="label">Luogo</span>
@@ -3025,8 +3036,8 @@
     <span class="chip">Andata</span>
   </div>
   <div class="teams">
-    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span></div>
-    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span><span class="team-score">17</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span><span class="team-score">16</span></div>
   </div>
   <div class="place">
     <span class="label">Luogo</span>
