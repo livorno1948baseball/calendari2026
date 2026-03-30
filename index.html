@@ -360,8 +360,8 @@
     <span class="chip">Andata</span>
   </div>
   <div class="teams">
-    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
-    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">7</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span><span class="team-score">11</span></div>
   </div>
   <div class="place">
     <span class="label">Luogo</span>
@@ -3058,8 +3058,8 @@
     <span class="chip">Andata</span>
   </div>
   <div class="teams">
-    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
-    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">7</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span><span class="team-score">11</span></div>
   </div>
   <div class="place">
     <span class="label">Luogo</span>
@@ -3375,8 +3375,8 @@
     <span class="chip">Andata</span>
   </div>
   <div class="teams">
-    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
-    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">7</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span><span class="team-score">11</span></div>
   </div>
   <div class="place">
     <span class="label">Luogo</span>
@@ -4220,17 +4220,7 @@
         const match = rawDate.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
         if (!match) return null;
         const [, day, month, year] = match;
-        const rawTime = (card.dataset.time || '').trim();
-        let hours = 23;
-        let minutes = 59;
-        if (rawTime) {
-          const timeMatch = rawTime.match(/^(\d{1,2}):(\d{2})$/);
-          if (timeMatch) {
-            hours = Number(timeMatch[1]);
-            minutes = Number(timeMatch[2]);
-          }
-        }
-        return new Date(Number(year), Number(month) - 1, Number(day), hours, minutes);
+        return new Date(Number(year), Number(month) - 1, Number(day));
       }
 
       function partitionMatches(panel) {
@@ -4243,10 +4233,11 @@
         const cards = Array.from(panel.querySelectorAll('.card'));
         if (!cards.length) return;
 
-        const now = new Date();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
         cards.forEach(card => {
           const matchDate = parseMatchDate(card);
-          if (matchDate && matchDate < now) {
+          if (matchDate && matchDate < today) {
             pastCards.appendChild(card);
           } else {
             upcomingCards.appendChild(card);
