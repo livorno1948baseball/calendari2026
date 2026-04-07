@@ -1,36 +1,4324 @@
-2026-calendario.json-4-    "turno": "Regular season",
-2026-calendario.json-5-    "girone": "A",
-2026-calendario.json-6-    "fase": "Andata",
-2026-calendario.json:7:    "codice_gara": "B0912AAA0111",
-2026-calendario.json-8-    "data": "04/04/2026",
-2026-calendario.json-9-    "ora": "11:00",
-2026-calendario.json-10-    "stadio": "STADIO COMUNALE BASEBALL SIMONE SCARPELLI - 58100 Grosseto (GR) - VIA ORCAGNA",
---
-sito/export_html.py-67-                and str(row.get("punteggio_ospite")) != ""
-sito/export_html.py-68-            )
-sito/export_html.py-69-            home_score = (
-sito/export_html.py:70:                f'<span class="team-score">{val("punteggio_casa")}</span>'
-sito/export_html.py-71-                if has_score
-sito/export_html.py-72-                else ""
-sito/export_html.py-73-            )
-sito/export_html.py-74-            away_score = (
-sito/export_html.py:75:                f'<span class="team-score">{val("punteggio_ospite")}</span>'
-sito/export_html.py-76-                if has_score
-sito/export_html.py-77-                else ""
-sito/export_html.py-78-            )
---
-sito/export_html.py-344-      align-items: baseline;
-sito/export_html.py-345-      gap: 10px;
-sito/export_html.py-346-    }}
-sito/export_html.py:347:    .team-score {{
-sito/export_html.py-348-      min-width: 24px;
-sito/export_html.py-349-      text-align: right;
-sito/export_html.py-350-      font-size: 28px;
---
-sito/export_html.py-422-      .name {{
-sito/export_html.py-423-        font-size: 18px;
-sito/export_html.py-424-      }}
-sito/export_html.py:425:      .team-score {{
-sito/export_html.py-426-        font-size: 24px;
-sito/export_html.py-427-      }}
-sito/export_html.py-428-      .value {{
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Livorno 1948 Baseball - Calendario 2026</title>
+  <meta name="description" content="Calendario 2026 del Livorno 1948 Baseball con partite, date, orari e campi di gioco.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#773853">
+  <link rel="canonical" href="https://livorno1948baseball.github.io/calendari2026/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Livorno 1948 Baseball - Calendario 2026">
+  <meta property="og:description" content="Calendario 2026 del Livorno 1948 Baseball con partite, date, orari e campi di gioco.">
+  <meta property="og:url" content="https://livorno1948baseball.github.io/calendari2026/">
+  <meta property="og:site_name" content="Livorno 1948 Baseball">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:image" content="https://livorno1948baseball.github.io/calendari2026/logo.png">
+  <meta property="og:image:alt" content="Logo Livorno 1948 Baseball">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Livorno 1948 Baseball - Calendario 2026">
+  <meta name="twitter:description" content="Calendario 2026 del Livorno 1948 Baseball con partite, date, orari e campi di gioco.">
+  <meta name="twitter:image" content="https://livorno1948baseball.github.io/calendari2026/logo.png">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <style>
+    :root {
+      --bg: #f8f8f6;
+      --ink: #1c1c1c;
+      --muted: #6b6b6b;
+      --table-border: #d9d9d0;
+      --head-bg: #773853;
+      --row-alt: #efcecc;
+    }
+    body {
+      margin: 0;
+      font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .wrap {
+      padding: 24px;
+      max-width: 2400px;
+      margin: 0 auto;
+    }
+    .tabs {
+      margin-top: 8px;
+    }
+    .tab-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .tab-button {
+      appearance: none;
+      font-size: 25px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--table-border);
+      background: #fff;
+      cursor: pointer;
+      user-select: none;
+      color: var(--ink);
+    }
+    .tab-button[aria-selected="true"] {
+      background: var(--head-bg);
+      color: #fff;
+      border-color: var(--head-bg);
+    }
+    .tab-button:focus-visible {
+      outline: 3px solid rgba(119, 56, 83, 0.35);
+      outline-offset: 2px;
+    }
+    .tab-panel:focus-visible {
+      outline: none;
+    }
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 0 0 12px 0;
+    }
+    .logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+    }
+    h1 {
+      margin: 0;
+      font-size: 70px;
+      letter-spacing: 0.2px;
+      color: var(--head-bg);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .match-groups {
+      display: grid;
+      gap: 28px;
+    }
+    .match-group {
+      display: grid;
+      gap: 14px;
+    }
+    .section-title {
+      margin: 0;
+      padding-top: 6px;
+      border-top: 2px solid var(--table-border);
+      font-size: 28px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--head-bg);
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--table-border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card-top {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .date {
+      color: var(--head-bg);
+    }
+    .time {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      background: var(--row-alt);
+      color: #4b1f27;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .teams {
+      display: grid;
+      gap: 8px;
+    }
+    .team {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .team-score {
+      min-width: 24px;
+      text-align: right;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--head-bg);
+    }
+    .label {
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.2px;
+    }
+    .name {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .place,
+    .code {
+      display: grid;
+      gap: 4px;
+    }
+    .value {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .empty {
+      padding: 24px;
+      border: 1px dashed var(--table-border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    [hidden] {
+      display: none !important;
+    }
+    @media (max-width: 900px) {
+      .title {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .title-right {
+        margin-left: 0;
+        width: 100%;
+      }
+      .tab-controls {
+        width: 100%;
+      }
+      .tab-button {
+        font-size: 18px;
+        padding: 6px 10px;
+      }
+      h1 {
+        font-size: 42px;
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .section-title {
+        font-size: 22px;
+      }
+      .card {
+        padding: 14px;
+      }
+      .card-top {
+        font-size: 20px;
+      }
+      .name {
+        font-size: 18px;
+      }
+      .team-score {
+        font-size: 24px;
+      }
+      .value {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">
+      <img class="logo" src="logo.png" alt="Logo Livorno 1948 Baseball">
+      <h1>Calendario 2026</h1>
+    </div>
+    <div class="tabs">
+      <div class="tab-controls" role="tablist" aria-label="Categorie calendario">
+        <button type="button" id="tab-0" class="tab-button" role="tab" aria-selected="true" aria-controls="panel-tab-0" data-hash="" tabindex="0">Tutte</button><button type="button" id="tab-1" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-tab-1" data-hash="serie-b" tabindex="-1">Serie B</button><button type="button" id="tab-2" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-tab-2" data-hash="serie-c" tabindex="-1">Serie C</button><button type="button" id="tab-3" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-tab-3" data-hash="u15" tabindex="-1">U15</button><button type="button" id="tab-4" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-tab-4" data-hash="u12" tabindex="-1">U12</button><button type="button" id="tab-5" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-tab-5" data-hash="sisi" tabindex="-1">STADIO A. SISI</button>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel" id="panel-tab-0" role="tabpanel" aria-labelledby="tab-0" tabindex="0"><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="14/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">14/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0111</span>
+  </div>
+</article><article class="card" data-date="21/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">21/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">8</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">BSC GROSSETO</span><span class="team-score">15</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0211</span>
+  </div>
+</article><article class="card" data-date="22/03/2026" data-time="10:30">
+  <div class="card-top">
+    <div class="date">22/03/2026</div>
+    <div class="time">10:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span><span class="team-score">17</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span><span class="team-score">16</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0213</span>
+  </div>
+</article><article class="card" data-date="28/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">28/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0314</span>
+  </div>
+</article><article class="card" data-date="29/03/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">29/03/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">7</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span><span class="team-score">11</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0311</span>
+  </div>
+</article><article class="card" data-date="04/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">04/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0111</span>
+  </div>
+</article><article class="card" data-date="11/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">11/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">MONTECHIANTI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0411</span>
+  </div>
+</article><article class="card" data-date="12/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">AREZZO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Arezzo (AR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0114</span>
+  </div>
+</article><article class="card" data-date="12/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Capannori (LU)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0411</span>
+  </div>
+</article><article class="card" data-date="12/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COSMOS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0113</span>
+  </div>
+</article><article class="card" data-date="12/04/2026" data-time="">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">AREZZO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Arezzo (AR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0214</span>
+  </div>
+</article><article class="card" data-date="18/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">18/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0511</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0312</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CHIANTELLERONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0512</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">SIENA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0212</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0412</span>
+  </div>
+</article><article class="card" data-date="25/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0511</span>
+  </div>
+</article><article class="card" data-date="25/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0613</span>
+  </div>
+</article><article class="card" data-date="25/04/2026" data-time="20:00">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">20:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0611</span>
+  </div>
+</article><article class="card" data-date="26/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0611</span>
+  </div>
+</article><article class="card" data-date="26/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0312</span>
+  </div>
+</article><article class="card" data-date="02/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">02/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0711</span>
+  </div>
+</article><article class="card" data-date="03/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">03/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0411</span>
+  </div>
+</article><article class="card" data-date="09/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">09/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0913</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="10:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">10:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1013</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">MONTERIGGIONI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0512</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0111</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0111</span>
+  </div>
+</article><article class="card" data-date="16/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">16/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">BSC GROSSETO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0211</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LONGBRIDGE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bologna</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1112</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0213</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">NUOVE PANTERE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0613</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LONGBRIDGE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bologna</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1212</span>
+  </div>
+</article><article class="card" data-date="23/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">23/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0314</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0713</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0311</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PHOENIX</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0711</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0813</span>
+  </div>
+</article><article class="card" data-date="30/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">30/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">MONTECHIANTI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0411</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COLORNO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1312</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0411</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COLORNO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1412</span>
+  </div>
+</article><article class="card" data-date="06/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">06/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0511</span>
+  </div>
+</article><article class="card" data-date="07/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0114</span>
+  </div>
+</article><article class="card" data-date="07/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">COSMOS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">San Casciano In Val Di Pesa</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0113</span>
+  </div>
+</article><article class="card" data-date="07/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0214</span>
+  </div>
+</article><article class="card" data-date="13/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">13/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0613</span>
+  </div>
+</article><article class="card" data-date="14/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0312</span>
+  </div>
+</article><article class="card" data-date="14/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SIENA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0212</span>
+  </div>
+</article><article class="card" data-date="14/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0412</span>
+  </div>
+</article><article class="card" data-date="20/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">20/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0711</span>
+  </div>
+</article><article class="card" data-date="21/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0511</span>
+  </div>
+</article><article class="card" data-date="21/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0312</span>
+  </div>
+</article><article class="card" data-date="21/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0611</span>
+  </div>
+</article><article class="card" data-date="27/06/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">27/06/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0611</span>
+  </div>
+</article><article class="card" data-date="28/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0713</span>
+  </div>
+</article><article class="card" data-date="28/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0411</span>
+  </div>
+</article><article class="card" data-date="28/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0813</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="10:30">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">10:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CHIANTELLERONI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bagno A Ripoli (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0512</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CALI ROMA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Roma</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0913</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">MONTERIGGIONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0512</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CALI ROMA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Roma</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1013</span>
+  </div>
+</article><article class="card" data-date="12/07/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1112</span>
+  </div>
+</article><article class="card" data-date="12/07/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">NUOVE PANTERE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0613</span>
+  </div>
+</article><article class="card" data-date="12/07/2026" data-time="">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1212</span>
+  </div>
+</article><article class="card" data-date="19/07/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">19/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PHOENIX</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0711</span>
+  </div>
+</article><article class="card" data-date="26/07/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">26/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">COLORNO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Colorno (PR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1312</span>
+  </div>
+</article><article class="card" data-date="26/07/2026" data-time="">
+  <div class="card-top">
+    <div class="date">26/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">COLORNO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Colorno (PR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1412</span>
+  </div>
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0" hidden><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="12/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">AREZZO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Arezzo (AR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0114</span>
+  </div>
+</article><article class="card" data-date="12/04/2026" data-time="">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">AREZZO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Arezzo (AR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0214</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0312</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0412</span>
+  </div>
+</article><article class="card" data-date="25/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0511</span>
+  </div>
+</article><article class="card" data-date="25/04/2026" data-time="20:00">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">20:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0611</span>
+  </div>
+</article><article class="card" data-date="09/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">09/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0913</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="10:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">10:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1013</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LONGBRIDGE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bologna</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1112</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LONGBRIDGE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bologna</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1212</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0713</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0813</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COLORNO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1312</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COLORNO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1412</span>
+  </div>
+</article><article class="card" data-date="07/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0114</span>
+  </div>
+</article><article class="card" data-date="07/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0214</span>
+  </div>
+</article><article class="card" data-date="14/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0312</span>
+  </div>
+</article><article class="card" data-date="14/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0412</span>
+  </div>
+</article><article class="card" data-date="21/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0511</span>
+  </div>
+</article><article class="card" data-date="21/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0611</span>
+  </div>
+</article><article class="card" data-date="28/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0713</span>
+  </div>
+</article><article class="card" data-date="28/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0813</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CALI ROMA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Roma</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0913</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CALI ROMA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Roma</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1013</span>
+  </div>
+</article><article class="card" data-date="12/07/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1112</span>
+  </div>
+</article><article class="card" data-date="12/07/2026" data-time="">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1212</span>
+  </div>
+</article><article class="card" data-date="26/07/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">26/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">COLORNO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Colorno (PR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1312</span>
+  </div>
+</article><article class="card" data-date="26/07/2026" data-time="">
+  <div class="card-top">
+    <div class="date">26/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">COLORNO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Colorno (PR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1412</span>
+  </div>
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="12/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COSMOS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0113</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">SIENA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0212</span>
+  </div>
+</article><article class="card" data-date="26/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0312</span>
+  </div>
+</article><article class="card" data-date="03/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">03/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0411</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">MONTERIGGIONI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0512</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">NUOVE PANTERE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0613</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PHOENIX</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0711</span>
+  </div>
+</article><article class="card" data-date="07/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">COSMOS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">San Casciano In Val Di Pesa</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0113</span>
+  </div>
+</article><article class="card" data-date="14/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SIENA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0212</span>
+  </div>
+</article><article class="card" data-date="21/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0312</span>
+  </div>
+</article><article class="card" data-date="28/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0411</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">MONTERIGGIONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0512</span>
+  </div>
+</article><article class="card" data-date="12/07/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">NUOVE PANTERE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0613</span>
+  </div>
+</article><article class="card" data-date="19/07/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">19/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PHOENIX</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0711</span>
+  </div>
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="14/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">14/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0111</span>
+  </div>
+</article><article class="card" data-date="21/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">21/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">8</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">BSC GROSSETO</span><span class="team-score">15</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0211</span>
+  </div>
+</article><article class="card" data-date="28/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">28/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Castiglione Della Pescaia (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0314</span>
+  </div>
+</article><article class="card" data-date="11/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">11/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">MONTECHIANTI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0411</span>
+  </div>
+</article><article class="card" data-date="18/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">18/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0511</span>
+  </div>
+</article><article class="card" data-date="25/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0613</span>
+  </div>
+</article><article class="card" data-date="02/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">02/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0711</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0111</span>
+  </div>
+</article><article class="card" data-date="16/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">16/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">BSC GROSSETO</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0211</span>
+  </div>
+</article><article class="card" data-date="23/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">23/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0314</span>
+  </div>
+</article><article class="card" data-date="30/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">30/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">MONTECHIANTI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Monteriggioni (SI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0411</span>
+  </div>
+</article><article class="card" data-date="06/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">06/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0511</span>
+  </div>
+</article><article class="card" data-date="13/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">13/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0613</span>
+  </div>
+</article><article class="card" data-date="20/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">20/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0711</span>
+  </div>
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-4" role="tabpanel" aria-labelledby="tab-4" tabindex="0" hidden><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="22/03/2026" data-time="10:30">
+  <div class="card-top">
+    <div class="date">22/03/2026</div>
+    <div class="time">10:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">FIORENTINA</span><span class="team-score">17</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span><span class="team-score">16</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Firenze (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0213</span>
+  </div>
+</article><article class="card" data-date="29/03/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">29/03/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">7</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span><span class="team-score">11</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0311</span>
+  </div>
+</article><article class="card" data-date="04/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">04/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Grosseto (GR)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0111</span>
+  </div>
+</article><article class="card" data-date="12/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Capannori (LU)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0411</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CHIANTELLERONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0512</span>
+  </div>
+</article><article class="card" data-date="26/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0611</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0111</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0213</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LANCERS</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Lastra A Signa (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0311</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0411</span>
+  </div>
+</article><article class="card" data-date="27/06/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">27/06/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">PADULE</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Sesto Fiorentino (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0611</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="10:30">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">10:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">CHIANTELLERONI</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Bagno A Ripoli (FI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0512</span>
+  </div>
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div><div class="tab-panel" id="panel-tab-5" role="tabpanel" aria-labelledby="tab-5" tabindex="0" hidden><div class="match-groups">
+  <section class="match-group upcoming-group">
+    <h2 class="section-title">Prossime partite</h2>
+    <div class="cards upcoming-cards"><article class="card" data-date="14/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">14/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LIVORNO 1948</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0111</span>
+  </div>
+</article><article class="card" data-date="21/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">21/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">8</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">BSC GROSSETO</span><span class="team-score">15</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0211</span>
+  </div>
+</article><article class="card" data-date="28/03/2026" data-time="15:30">
+  <div class="card-top">
+    <div class="date">28/03/2026</div>
+    <div class="time">15:30</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0311</span>
+  </div>
+</article><article class="card" data-date="29/03/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">29/03/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span><span class="team-score">7</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span><span class="team-score">11</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0311</span>
+  </div>
+</article><article class="card" data-date="11/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">11/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">MONTECHIANTI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0411</span>
+  </div>
+</article><article class="card" data-date="12/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">12/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COSMOS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0113</span>
+  </div>
+</article><article class="card" data-date="18/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">18/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0511</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0312</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CHIANTELLERONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0512</span>
+  </div>
+</article><article class="card" data-date="19/04/2026" data-time="">
+  <div class="card-top">
+    <div class="date">19/04/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0412</span>
+  </div>
+</article><article class="card" data-date="25/04/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">25/04/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">BSC GROSSETO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0611</span>
+  </div>
+</article><article class="card" data-date="26/04/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAA0611</span>
+  </div>
+</article><article class="card" data-date="26/04/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">26/04/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0312</span>
+  </div>
+</article><article class="card" data-date="02/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">02/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAA0711</span>
+  </div>
+</article><article class="card" data-date="09/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">09/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0913</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="10:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">10:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">CALI ROMA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1013</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0111</span>
+  </div>
+</article><article class="card" data-date="10/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">10/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0111</span>
+  </div>
+</article><article class="card" data-date="16/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">16/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0214</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0213</span>
+  </div>
+</article><article class="card" data-date="17/05/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">17/05/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">NUOVE PANTERE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHA0613</span>
+  </div>
+</article><article class="card" data-date="23/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">23/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0314</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0713</span>
+  </div>
+</article><article class="card" data-date="24/05/2026" data-time="">
+  <div class="card-top">
+    <div class="date">24/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA0813</span>
+  </div>
+</article><article class="card" data-date="30/05/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">30/05/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0413</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COLORNO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1312</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">U12</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">DRK</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0912AAR0411</span>
+  </div>
+</article><article class="card" data-date="31/05/2026" data-time="">
+  <div class="card-top">
+    <div class="date">31/05/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Andata</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">COLORNO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACA1412</span>
+  </div>
+</article><article class="card" data-date="06/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">06/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">MONTECHIANTI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0512</span>
+  </div>
+</article><article class="card" data-date="07/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0114</span>
+  </div>
+</article><article class="card" data-date="07/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">07/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">AREZZO</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0214</span>
+  </div>
+</article><article class="card" data-date="13/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">13/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LANCERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0613</span>
+  </div>
+</article><article class="card" data-date="14/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">14/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">SIENA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0212</span>
+  </div>
+</article><article class="card" data-date="20/06/2026" data-time="16:00">
+  <div class="card-top">
+    <div class="date">20/06/2026</div>
+    <div class="time">16:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">sabato</span>
+    <span class="chip">U15</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">ETRUSCAN FIGHTERS</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B0915AAR0713</span>
+  </div>
+</article><article class="card" data-date="21/06/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0511</span>
+  </div>
+</article><article class="card" data-date="21/06/2026" data-time="">
+  <div class="card-top">
+    <div class="date">21/06/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PADULE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR0611</span>
+  </div>
+</article><article class="card" data-date="28/06/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">28/06/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">FIORENTINA</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0411</span>
+  </div>
+</article><article class="card" data-date="05/07/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">05/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">MONTERIGGIONI</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0512</span>
+  </div>
+</article><article class="card" data-date="12/07/2026" data-time="11:00">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time">11:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1112</span>
+  </div>
+</article><article class="card" data-date="12/07/2026" data-time="">
+  <div class="card-top">
+    <div class="date">12/07/2026</div>
+    <div class="time"></div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie B</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">LONGBRIDGE</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SBACR1212</span>
+  </div>
+</article><article class="card" data-date="19/07/2026" data-time="15:00">
+  <div class="card-top">
+    <div class="date">19/07/2026</div>
+    <div class="time">15:00</div>
+  </div>
+  <div class="meta">
+    <span class="chip">domenica</span>
+    <span class="chip">Serie C</span>
+    <span class="chip">Ritorno</span>
+  </div>
+  <div class="teams">
+    <div class="team"><span class="label">Casa</span><span class="name">DRK SPORT-LIVORNO 1948</span></div>
+    <div class="team"><span class="label">Ospiti</span><span class="name">PHOENIX</span></div>
+  </div>
+  <div class="place">
+    <span class="label">Luogo</span>
+    <span class="value">Livorno (LI)</span>
+  </div>
+  <div class="code">
+    <span class="label">Codice gara</span>
+    <span class="value">B00SCAHR0711</span>
+  </div>
+</article></div>
+  </section>
+  <section class="match-group past-group" hidden>
+    <h2 class="section-title">Partite passate</h2>
+    <div class="cards past-cards"></div>
+  </section>
+</div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tabs = Array.from(document.querySelectorAll('.tab-button'));
+      const panels = Array.from(document.querySelectorAll('.tab-panel'));
+
+      function setActiveTab(nextTab, updateHash = true) {
+        if (!nextTab) return;
+        tabs.forEach(tab => {
+          const isActive = tab === nextTab;
+          const panel = document.getElementById(tab.getAttribute('aria-controls'));
+          tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          tab.tabIndex = isActive ? 0 : -1;
+          if (panel) {
+            panel.hidden = !isActive;
+          }
+        });
+        if (updateHash) {
+          syncHashFromTab(nextTab);
+        }
+      }
+
+      function parseMatchDate(card) {
+        const rawDate = card.dataset.date || '';
+        const match = rawDate.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        if (!match) return null;
+        const [, day, month, year] = match;
+        return new Date(Number(year), Number(month) - 1, Number(day));
+      }
+
+      function partitionMatches(panel) {
+        const upcomingGroup = panel.querySelector('.upcoming-group');
+        const pastGroup = panel.querySelector('.past-group');
+        const upcomingCards = panel.querySelector('.upcoming-cards');
+        const pastCards = panel.querySelector('.past-cards');
+        if (!upcomingGroup || !pastGroup || !upcomingCards || !pastCards) return;
+
+        const cards = Array.from(panel.querySelectorAll('.card'));
+        if (!cards.length) return;
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        cards.forEach(card => {
+          const matchDate = parseMatchDate(card);
+          if (matchDate && matchDate < today) {
+            pastCards.appendChild(card);
+          } else {
+            upcomingCards.appendChild(card);
+          }
+        });
+
+        const hasUpcoming = upcomingCards.children.length > 0;
+        const hasPast = pastCards.children.length > 0;
+        upcomingGroup.hidden = !hasUpcoming;
+        pastGroup.hidden = !hasPast;
+      }
+
+      function setActiveFromHash() {
+        const hash = window.location.hash.replace('#', '');
+        const fallbackTab = tabs[0];
+        const nextTab = hash
+          ? tabs.find(tab => tab.dataset.hash === hash) || fallbackTab
+          : fallbackTab;
+        setActiveTab(nextTab, false);
+      }
+      function syncHashFromTab(tab) {
+        const hash = tab.dataset.hash || '';
+        if (hash) {
+          history.replaceState(null, '', '#' + hash);
+        } else {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+      }
+      function moveTabFocus(currentTab, direction) {
+        const currentIndex = tabs.indexOf(currentTab);
+        if (currentIndex === -1) return;
+        const nextIndex = (currentIndex + direction + tabs.length) % tabs.length;
+        const nextTab = tabs[nextIndex];
+        nextTab.focus();
+        setActiveTab(nextTab);
+      }
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => setActiveTab(tab));
+        tab.addEventListener('keydown', event => {
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+            event.preventDefault();
+            moveTabFocus(tab, 1);
+          } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            moveTabFocus(tab, -1);
+          } else if (event.key === 'Home') {
+            event.preventDefault();
+            tabs[0].focus();
+            setActiveTab(tabs[0]);
+          } else if (event.key === 'End') {
+            event.preventDefault();
+            tabs[tabs.length - 1].focus();
+            setActiveTab(tabs[tabs.length - 1]);
+          }
+        });
+      });
+      panels.forEach(partitionMatches);
+      setActiveFromHash();
+      window.addEventListener('hashchange', setActiveFromHash);
+    })();
+  </script>
+</body>
+</html>
